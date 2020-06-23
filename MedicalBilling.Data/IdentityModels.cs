@@ -3,6 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using MedicalBilling.Data.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -31,6 +32,12 @@ namespace MedicalBilling.Data
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Diagnosis> Diagnoses { get; set; }
+        public DbSet<Procedure> Procedures { get; set; }
+        public DbSet<DiagnosticCode> DiagnosticCodes { get; set; }
+        public DbSet<ProcedureCode> ProcedureCodes { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
