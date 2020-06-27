@@ -1,5 +1,7 @@
 ﻿using MedicalBilling.Data;
 using MedicalBilling.Data.Entities;
+using MedicalBilling.Models.ProcedureCodeModels;
+using MedicalBilling.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,9 @@ namespace MedicalBilling.WebMVC.Controllers
         // GET: ProcedureCode
         public ActionResult Index()
         {
-            return View();
+            var service = new ProcedureCodeService();
+            var model = service.GetProcedureCodes();
+            return View(model);
         }
 
         //CREATE ProcedureCode
@@ -25,61 +29,68 @@ namespace MedicalBilling.WebMVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(ProcedureCode procedureCode)
+        public ActionResult Create(ProcedureCodeCreate model)
         {
-            if (ModelState.IsValid)
+            var service = new ProcedureCodeService();
+            if (!ModelState.IsValid)
             {
-                _ctx.ProcedureCodes.Add(procedureCode);
-                _ctx.SaveChanges();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             }
-            return View(procedureCode);
+            service.CreateProcedureCode(model);
+            return View(model);
         }
 
         // GET ProcedureCode DETAILS/ID
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            //FIRST: Find the ProcedureCode by ID
-            ProcedureCode procedureCode = _ctx.ProcedureCodes.Find(id);
-            if (procedureCode == null)
-            {
-                return HttpNotFound();
-            }
-            return View(procedureCode);
+            var service = new ProcedureCodeService();
+            var model = service.GetProcedureCodeById(id);
+            return View(model);
         }
 
 
         //EDIT ProcedureCode DETAILS
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+
+            var service = new ProcedureCodeService();
+            var detail = service.GetProcedureCodeById(id);
+            var model = new ProcedureCodeDetail
+            {
+                ProcedureCodeId = detail.ProcedureCodeId,
+                ICD10Code = detail.ICD10Code,
+                Price = detail.Price,
+                ProcedureId = detail.ProcedureId
+            };
+            return View(model);
         }
         [HttpPut]
-        public ActionResult Edit(ProcedureCode procedureCode)
+        public ActionResult Edit(int id, ProcedureCodeDetail detail)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) return View(detail);
+            if (detail.ProcedureCodeId != id)
             {
-                _ctx.Entry(procedureCode).State = System.Data.Entity.EntityState.Modified;
-                _ctx.SaveChanges();
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(detail);
             }
-            return View(procedureCode);
+            var service = new ProcedureCodeService();
+            service.UpdateProcedureCode(detail);
+            return View(detail);
         }
 
         //DELETE procedureCode by ID
-        public ActionResult Delete(int? id)
-        {
-            return View();
-        }
-        [HttpDelete]
         public ActionResult Delete(int id)
         {
-            ProcedureCode procedureCode = _ctx.ProcedureCodes.Find();
-            _ctx.ProcedureCodes.Remove(procedureCode);
-            _ctx.SaveChanges();
+            var service = new ProcedureCodeService();
+            var model = service.GetProcedureCodeById(id);
+            return View(model);
+        }
+        [HttpDelete]
+        public ActionResult DeleteProcedureCode(int id)
+        {
+            var service = new ProcedureCodeService();
+            service.RemoveProcedureCode(id);
             return RedirectToAction("Index");
         }
 

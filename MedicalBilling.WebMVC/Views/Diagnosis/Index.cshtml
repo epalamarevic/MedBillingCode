@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<MedicalBilling.Models.DiagnosisModels.DiagnosisDetail>
-
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Diagnoses</h2>
+<h2>Diagnosis</h2>
 
 
 
@@ -27,6 +26,7 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
+                @Html.ActionLink("Details", "Details", new { id = item.DiagnosisId})
             </td>
         </tr>
     }

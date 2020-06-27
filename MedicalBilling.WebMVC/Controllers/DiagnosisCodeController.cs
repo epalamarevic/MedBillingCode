@@ -1,5 +1,7 @@
 ﻿using MedicalBilling.Data;
 using MedicalBilling.Data.Entities;
+using MedicalBilling.Models.DiagnosticCodeModels;
+using MedicalBilling.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,9 @@ namespace MedicalBilling.WebMVC.Controllers
         // GET: DiagnosisCode
         public ActionResult Index()
         {
-            return View();
+            var service = new DiagnosticCodeService();
+            var model = service.GetDiagnosticCodes();
+            return View(model);
         }
 
         //CREATE diagnosisCode
@@ -25,61 +29,68 @@ namespace MedicalBilling.WebMVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(DiagnosticCode diagnosisCode)
+        public ActionResult Create(DiagnosticCodeCreate model)
         {
-            if (ModelState.IsValid)
+            var service = new DiagnosticCodeService();
+            if (!ModelState.IsValid)
             {
-                _ctx.DiagnosticCodes.Add(diagnosisCode);
-                _ctx.SaveChanges();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             }
-            return View(diagnosisCode);
+            service.CreateDiagnosisCode(model);
+            return View(model);
         }
 
         // GET DIAGNOSTIC CODE DETAILS/ID
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            //FIRST: Find the diagnostic Code by ID
-            DiagnosticCode diagnosticCode = _ctx.DiagnosticCodes.Find(id);
-            if (diagnosticCode == null)
-            {
-                return HttpNotFound();
-            }
-            return View(diagnosticCode);
+            DiagnosticCodeService service = new DiagnosticCodeService();
+            var model = service.GetDiagnosticCodeById(id);
+            return View(model);
         }
 
 
         //EDIT Diagnostic Code DETAILS
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            var service = new DiagnosticCodeService();
+            var detail = service.GetDiagnosticCodeById(id);
+            var model = new DiagnosticCodeDetail
+            {
+                DiagnosticCodeId = detail.DiagnosticCodeId,
+                ICD10Code = detail.ICD10Code,
+                Price = detail.Price,
+                DiagnosisId = detail.DiagnosisId
+            };
+            return View(model);
         }
         [HttpPut]
-        public ActionResult Edit(DiagnosticCode diagnosticCode)
+        public ActionResult Edit(int id, DiagnosticCodeDetail detail)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) return View(detail);
+            if(detail.DiagnosticCodeId != id)
             {
-                _ctx.Entry(diagnosticCode).State = System.Data.Entity.EntityState.Modified;
-                _ctx.SaveChanges();
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(detail);
             }
-            return View(diagnosticCode);
+            var service = new DiagnosticCodeService();
+            service.UpdateDiagnosticCode(detail);
+            return View(detail);
+
         }
 
         //DELETE diagnosticCode by ID
-        public ActionResult Delete(int? id)
-        {
-            return View();
-        }
-        [HttpDelete]
         public ActionResult Delete(int id)
         {
-            DiagnosticCode diagnostic = _ctx.DiagnosticCodes.Find(id);
-            _ctx.DiagnosticCodes.Remove(diagnostic);
-            _ctx.SaveChanges();
+            var service = new DiagnosticCodeService();
+            var model = service.GetDiagnosticCodeById(id);
+            return View(model);
+        }
+        [HttpDelete]
+        public ActionResult DeleteDiagnoticCode(int id)
+        {
+            var service = new DiagnosticCodeService();
+            service.RemoveDiagnosticCode(id);
             return RedirectToAction("Index");
         }
 

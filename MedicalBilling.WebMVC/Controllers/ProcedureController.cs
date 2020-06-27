@@ -1,5 +1,7 @@
 ﻿using MedicalBilling.Data;
 using MedicalBilling.Data.Entities;
+using MedicalBilling.Models.ProcedureModel;
+using MedicalBilling.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,9 @@ namespace MedicalBilling.WebMVC.Controllers
         // GET: Procedure
         public ActionResult Index()
         {
-            return View();
+            var service = new ProcedureService();
+            var model = service.GetProcedures();
+            return View(model);
         }
 
 
@@ -26,61 +30,66 @@ namespace MedicalBilling.WebMVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Procedure procedure)
+        public ActionResult Create(ProcedureCreate model)
         {
-            if (ModelState.IsValid)
-            {
-                _ctx.Procedures.Add(procedure);
-                _ctx.SaveChanges();
-            }
-            return View(procedure);
-        }
-
-        // GET Procedure DETAILS/ID
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
+            var service = new ProcedureService();
+            if (!ModelState.IsValid)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //FIRST: Find the procedure by ID
-            Procedure procedure = _ctx.Procedures.Find(id);
-            if (procedure == null)
-            {
-                return HttpNotFound();
-            }
-            return View(procedure);
+            service.CreateProcedure(model);
+            return View(model);
+        }
+
+        // GET Procedure DETAILS/ID
+        public ActionResult Details(int id)
+        {
+            var service = new ProcedureService();
+            var model = service.GetProcedureById(id);
+            return View(model);
         }
 
 
         //EDIT Procedure DETAILS
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            var service = new ProcedureService();
+            var detail = service.GetProcedureById(id);
+            var model = new ProcedureDetail
+            {
+                ProcedureId = detail.ProcedureId,
+                Name = detail.Name,
+                Description = detail.Description
+            };
+            return View(model);
         }
         [HttpPut]
-        public ActionResult Edit(Procedure procedure)
+        public ActionResult Edit(int id, ProcedureDetail detail)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) return View(detail);
+
+            if (detail.ProcedureId != id)
             {
-                _ctx.Entry(procedure).State = System.Data.Entity.EntityState.Modified;
-                _ctx.SaveChanges();
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(detail);
             }
-            return View(procedure);
+            var service = new ProcedureService();
+            service.UpdateProcedure(detail);
+            return View(detail);
         }
 
         //DELETE Procedure by ID
-        public ActionResult Delete(int? id)
-        {
-            return View();
-        }
-        [HttpDelete]
         public ActionResult Delete(int id)
         {
-            Procedure procedure = _ctx.Procedures.Find();
-            _ctx.Procedures.Remove(procedure);
-            _ctx.SaveChanges();
+            var service = new ProcedureService();
+            var model = service.GetProcedureById(id);
+            return View(model);
+        }
+        [HttpDelete]
+        public ActionResult DeleteProcedure(int id)
+        {
+            ProcedureService service = new ProcedureService();
+            service.RemoveProcedure(id);
             return RedirectToAction("Index");
         }
 

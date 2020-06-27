@@ -15,7 +15,7 @@ namespace MedicalBilling.Services
 
         //CREATE
         //Create a Diagnosis
-        public void CreateDiagnosis (DiagnosisCreate model)
+        public void CreateDiagnosis(DiagnosisCreate model)
         {
             var entity = new Diagnosis()
             {

@@ -1,5 +1,6 @@
 ﻿using MedicalBilling.Data;
 using MedicalBilling.Data.Entities;
+using MedicalBilling.Models.DiagnosisModels;
 using MedicalBilling.Services;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,9 @@ namespace MedicalBilling.WebMVC.Controllers
         // GET: LIST of Diagnosis
         public ActionResult Index()
         {
-            return View(_ctx.Diagnoses.ToList());
+            var service = new DiagnosisService();
+            var model = service.GetAllDiagnoses();
+            return View(model);
         }
         
         
@@ -27,61 +30,67 @@ namespace MedicalBilling.WebMVC.Controllers
             return View();
         }
        [HttpPost]
-       public ActionResult Create(Diagnosis diagnosis)
+       public ActionResult Create(DiagnosisCreate model)
         {
-            if (ModelState.IsValid)
-            {
-                _ctx.Diagnoses.Add(diagnosis);
-                _ctx.SaveChanges();
-            }
-            return View(diagnosis);
-        }
-
-       // GET DIAGNOSIS DETAILS/ID
-       public ActionResult Details(int? id)
-        {
-            if (id == null)
+            DiagnosisService service = new DiagnosisService();
+            if (!ModelState.IsValid)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //FIRST: Find the diagnosis by ID
-            Diagnosis diagnosis = _ctx.Diagnoses.Find(id);
-            if(diagnosis == null)
-            {
-                return HttpNotFound();
-            }
-            return View(diagnosis);
+            service.CreateDiagnosis(model);
+                return View(model);
+           
+        }
+
+       // GET DIAGNOSIS DETAILS/ID
+       public ActionResult Details(int id)
+        {
+            DiagnosisService service = new DiagnosisService();
+            var model = service.GetDiagnosisById(id);
+            return View(model);
         }
 
 
-        //EDIT DIAGNOSIS DETAILS
-        public ActionResult Edit()
+        //EDIT DIAGNOSIS 
+        public ActionResult Edit(int id)
         {
-            return View();
+            DiagnosisService service = new DiagnosisService();
+            var detail = service.GetDiagnosisById(id);
+            var model = new DiagnosisDetail
+            {
+                DiagnosisId = detail.DiagnosisId,
+                Name = detail.Name,
+                Description = detail.Description
+            };
+            return View(model);
         }
         [HttpPut]
-        public ActionResult Edit(Diagnosis diagnosis)
+        public ActionResult Edit(int id, DiagnosisDetail detail)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) return View(detail);
+
+            if(detail.DiagnosisId != id)
             {
-                _ctx.Entry(diagnosis).State = System.Data.Entity.EntityState.Modified;
-                _ctx.SaveChanges();
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(detail);
             }
-            return View(diagnosis);
+            DiagnosisService service = new DiagnosisService();
+            service.UpdateDiagnosis(detail);
+            return View(detail);
         }
 
         //DELETE diagnosis by ID
-        public ActionResult Delete(int? id)
-        {
-            return View();
-        }
-        [HttpDelete]
         public ActionResult Delete(int id)
         {
-            Diagnosis diagnosis = _ctx.Diagnoses.Find();
-            _ctx.Diagnoses.Remove(diagnosis);
-            _ctx.SaveChanges();
+            DiagnosisService service = new DiagnosisService();
+            var model = service.GetDiagnosisById(id);
+            return View(model);
+        }
+        [HttpDelete]
+        public ActionResult DeleteDiagnosis(int id)
+        {
+            DiagnosisService service = new DiagnosisService();
+            service.RemoveDiagnosis(id);
             return RedirectToAction("Index");
         }
       
