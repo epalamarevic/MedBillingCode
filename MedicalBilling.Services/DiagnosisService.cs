@@ -12,7 +12,8 @@ namespace MedicalBilling.Services
    public class DiagnosisService
     {
         private readonly ApplicationDbContext _ctx = new ApplicationDbContext();
-        
+
+        //CREATE
         //Create a Diagnosis
         public void CreateDiagnosis (DiagnosisCreate model)
         {
@@ -25,7 +26,7 @@ namespace MedicalBilling.Services
             _ctx.SaveChanges();
         }
 
-
+        //READ
         //Get All Diagnoses
         public IEnumerable<DiagnosisDetail> GetAllDiagnoses()
         {
@@ -52,6 +53,7 @@ namespace MedicalBilling.Services
             return diagnosisDetail;
         }
         
+        //UPDATE
         //Update Diagnosis By Id
         public void UpdateDiagnosis (DiagnosisDetail detail)
         {
@@ -61,6 +63,7 @@ namespace MedicalBilling.Services
             _ctx.SaveChanges();
         }
 
+        //DELETE
         //Remove Diagnosis by Id
         public void RemoveDiagnosis(int diagnosisId)
         {
