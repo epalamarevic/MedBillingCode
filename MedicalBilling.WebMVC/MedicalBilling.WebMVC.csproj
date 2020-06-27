@@ -182,6 +182,7 @@
     <Compile Include="Controllers\DiagnosisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProcedureCodeController.cs" />
     <Compile Include="Controllers\ProcedureController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -252,6 +253,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\DiagnosisCode\" />
+    <Folder Include="Views\ProcedureCode\" />
     <Folder Include="Views\Procedure\" />
   </ItemGroup>
   <ItemGroup>
