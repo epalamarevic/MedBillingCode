@@ -3,74 +3,72 @@ using MedicalBilling.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
 namespace MedicalBilling.WebMVC.Controllers
 {
-    public class ProcedureController : Controller
+    public class DiagnosisCodeController : Controller
     {
         private ApplicationDbContext _ctx = new ApplicationDbContext();
 
-        // GET: Procedure
+        // GET: DiagnosisCode
         public ActionResult Index()
         {
             return View();
         }
 
-
-        //CREATE Procedure
+        //CREATE diagnosisCode
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Procedure procedure)
+        public ActionResult Create(DiagnosticCode diagnosisCode)
         {
             if (ModelState.IsValid)
             {
-                _ctx.Procedures.Add(procedure);
+                _ctx.DiagnosticCodes.Add(diagnosisCode);
                 _ctx.SaveChanges();
             }
-            return View(procedure);
+            return View(diagnosisCode);
         }
 
-        // GET Procedure DETAILS/ID
+        // GET DIAGNOSTIC CODE DETAILS/ID
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //FIRST: Find the procedure by ID
-            Procedure procedure = _ctx.Procedures.Find(id);
-            if (procedure == null)
+            //FIRST: Find the diagnostic Code by ID
+            DiagnosticCode diagnosticCode = _ctx.DiagnosticCodes.Find(id);
+            if (diagnosticCode == null)
             {
                 return HttpNotFound();
             }
-            return View(procedure);
+            return View(diagnosticCode);
         }
 
 
-        //EDIT Procedure DETAILS
+        //EDIT Diagnostic Code DETAILS
         public ActionResult Edit()
         {
             return View();
         }
         [HttpPut]
-        public ActionResult Edit(Procedure procedure)
+        public ActionResult Edit(DiagnosticCode diagnosticCode)
         {
             if (ModelState.IsValid)
             {
-                _ctx.Entry(procedure).State = System.Data.Entity.EntityState.Modified;
+                _ctx.Entry(diagnosticCode).State = System.Data.Entity.EntityState.Modified;
                 _ctx.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(procedure);
+            return View(diagnosticCode);
         }
 
-        //DELETE Procedure by ID
+        //DELETE diagnosticCode by ID
         public ActionResult Delete(int? id)
         {
             return View();
@@ -78,11 +76,13 @@ namespace MedicalBilling.WebMVC.Controllers
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            Procedure procedure = _ctx.Procedures.Find();
-            _ctx.Procedures.Remove(procedure);
+            DiagnosticCode diagnostic = _ctx.DiagnosticCodes.Find(id);
+            _ctx.DiagnosticCodes.Remove(diagnostic);
             _ctx.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
 
     }
 }
