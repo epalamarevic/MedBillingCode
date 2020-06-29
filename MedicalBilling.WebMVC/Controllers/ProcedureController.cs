@@ -23,7 +23,7 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles ="admin")]
         //CREATE Procedure
         public ActionResult Create()
         {

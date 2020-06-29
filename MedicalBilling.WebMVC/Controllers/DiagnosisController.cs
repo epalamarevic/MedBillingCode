@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace MedicalBilling.WebMVC.Controllers
 {
+    
     public class DiagnosisController : Controller
     {
         private ApplicationDbContext _ctx = new ApplicationDbContext();
@@ -23,7 +24,7 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
         
-        
+        [Authorize(Roles = "admin")]
         //CREATE diagnosis
         public ActionResult Create()
         {
