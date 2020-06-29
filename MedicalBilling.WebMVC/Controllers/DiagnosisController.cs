@@ -51,7 +51,6 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
 
-
         //EDIT DIAGNOSIS 
         public ActionResult Edit(int id)
         {
@@ -65,7 +64,8 @@ namespace MedicalBilling.WebMVC.Controllers
             };
             return View(model);
         }
-        [HttpPut]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, DiagnosisDetail detail)
         {
             if (ModelState.IsValid) return View(detail);
@@ -76,9 +76,13 @@ namespace MedicalBilling.WebMVC.Controllers
                 return View(detail);
             }
             DiagnosisService service = new DiagnosisService();
-            service.UpdateDiagnosis(detail);
+            if (service.UpdateDiagnosis(detail))
+            {
+                return RedirectToAction("Index");
+            }
             return View(detail);
         }
+
 
         //DELETE diagnosis by ID
         public ActionResult Delete(int id)

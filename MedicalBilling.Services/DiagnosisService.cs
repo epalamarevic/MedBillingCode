@@ -55,12 +55,12 @@ namespace MedicalBilling.Services
         
         //UPDATE
         //Update Diagnosis By Id
-        public void UpdateDiagnosis (DiagnosisDetail detail)
+        public bool UpdateDiagnosis (DiagnosisDetail detail)
         {
             var entity = _ctx.Diagnoses.Single(e => e.DiagnosisId == detail.DiagnosisId);
             entity.Name = detail.Name;
             entity.Description = detail.Description;
-            _ctx.SaveChanges();
+           return _ctx.SaveChanges() == 1;
         }
 
         //DELETE
