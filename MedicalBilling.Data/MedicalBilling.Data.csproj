@@ -54,6 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Diagnosis.cs" />
+    <Compile Include="Entities\DiagnosticCode.cs" />
+    <Compile Include="Entities\Procedure.cs" />
+    <Compile Include="Entities\ProcedureCode.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
