@@ -15,6 +15,8 @@ namespace MedicalBilling.Data.Entities
 
         [ForeignKey("Procedure")]
         public int ProcedureId { get; set; }
+        public string Name { get; set; }
         public virtual Procedure Procedure { get; set; }
+        
     }
 }

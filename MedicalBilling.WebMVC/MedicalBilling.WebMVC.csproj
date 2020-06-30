@@ -258,11 +258,16 @@
     <Content Include="Views\Procedure\Details.cshtml" />
     <Content Include="Views\Procedure\Edit.cshtml" />
     <Content Include="Views\Procedure\Delete.cshtml" />
+    <Content Include="Views\ProcedureCode\Index.cshtml" />
+    <Content Include="Views\ProcedureCode\Create.cshtml" />
+    <Content Include="Views\ProcedureCode\Details.cshtml" />
+    <Content Include="Views\ProcedureCode\Edit.cshtml" />
+    <Content Include="Views\ProcedureCode\Delete.cshtml" />
+    <Content Include="Views\DiagnosisCode\Index.cshtml" />
+    <Content Include="Views\DiagnosisCode\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DiagnosisCode\" />
-    <Folder Include="Views\ProcedureCode\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
