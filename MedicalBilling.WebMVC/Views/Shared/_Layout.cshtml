@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top bg-info">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -36,7 +36,6 @@
                         </div>
                     </div>
                 </form>
-                @Html.Partial("_LoginPartial")
             </div>
            
         </div>
@@ -45,13 +44,9 @@
         @RenderBody()
         <hr />
         <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                <ul>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#"> Facebook</a></li>
-                    <li><a href="#">Twitter</a></li>
-                </ul> 
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            @Html.ActionLink("Contact", "Contact", "Home")
+            @Html.Partial("_LoginPartial")
         </footer>
     </div>
 
