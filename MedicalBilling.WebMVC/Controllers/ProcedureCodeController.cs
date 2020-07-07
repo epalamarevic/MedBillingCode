@@ -59,6 +59,7 @@ namespace MedicalBilling.WebMVC.Controllers
             var detail = service.GetProcedureCodeById(id);
             var model = new ProcedureCodeDetail
             {
+                Name = detail.Name,
                 ProcedureCodeId = detail.ProcedureCodeId,
                 ICD10Code = detail.ICD10Code,
                 Price = detail.Price,

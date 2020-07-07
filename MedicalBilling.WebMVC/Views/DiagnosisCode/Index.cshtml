@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MedicalBilling.Models.DiagnosticCodeModels.DiagnosticCodeDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>DiagnosisCode</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DiagnosticCodeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ICD10Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiagnosisId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiagnosticCodeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ICD10Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiagnosisId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {id=item.DiagnosticCodeId }) |
+            @Html.ActionLink("Details", "Details", new {id=item.DiagnosisId}) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
