@@ -37,6 +37,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("ICD-10Code", "Details", "DiagnosisCode", new { id = Model.DiagnosisId }, null) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DiagnosisId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

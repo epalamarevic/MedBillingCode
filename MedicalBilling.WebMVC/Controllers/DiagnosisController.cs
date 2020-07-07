@@ -44,12 +44,14 @@ namespace MedicalBilling.WebMVC.Controllers
         }
 
        // GET DIAGNOSIS DETAILS/ID
+       [HttpGet]
        public ActionResult Details(int id)
         {
             DiagnosisService service = new DiagnosisService();
             var model = service.GetDiagnosisById(id);
             return View(model);
         }
+
 
         //EDIT DIAGNOSIS 
         public ActionResult Edit(int id)

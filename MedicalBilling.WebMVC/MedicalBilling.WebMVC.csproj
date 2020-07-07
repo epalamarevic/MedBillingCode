@@ -265,6 +265,9 @@
     <Content Include="Views\ProcedureCode\Delete.cshtml" />
     <Content Include="Views\DiagnosisCode\Index.cshtml" />
     <Content Include="Views\DiagnosisCode\Create.cshtml" />
+    <Content Include="Views\DiagnosisCode\Details.cshtml" />
+    <Content Include="Views\DiagnosisCode\Edit.cshtml" />
+    <Content Include="Views\DiagnosisCode\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -43,14 +43,14 @@ namespace MedicalBilling.Services
         //Get Diagnosis by Id
         public DiagnosisDetail GetDiagnosisById(int diagnosisId)
         {
-            var diagnosisEntity = _ctx.Diagnoses.Find(diagnosisId);
-            var diagnosisDetail = new DiagnosisDetail
+            var diagnosisEntity = _ctx.Diagnoses.Single(e => e.DiagnosisId == diagnosisId);
+            return new DiagnosisDetail
             {
                 DiagnosisId = diagnosisEntity.DiagnosisId,
                 Name = diagnosisEntity.Name,
                 Description = diagnosisEntity.Description
             };
-            return diagnosisDetail;
+           
         }
         
         //UPDATE

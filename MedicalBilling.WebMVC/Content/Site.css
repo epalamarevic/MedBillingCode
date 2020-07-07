@@ -1,12 +1,12 @@
 ﻿body {
     background-color:ghostwhite;
-    padding-top: 100px;
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    margin-top: 20px;
+    margin-top:25px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -23,11 +23,6 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 580px;
 }
 
-
-
-.search{
-    width:880px;
-}
