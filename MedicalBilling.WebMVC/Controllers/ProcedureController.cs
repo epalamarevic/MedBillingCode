@@ -23,7 +23,7 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
 
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles ="Admin")]
         //CREATE Procedure
         public ActionResult Create()
         {
@@ -38,7 +38,7 @@ namespace MedicalBilling.WebMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             service.CreateProcedure(model);
-            return View(model);
+            return RedirectToAction("Index");
         }
 
         // GET Procedure DETAILS/ID
@@ -85,7 +85,9 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = service.GetProcedureById(id);
             return View(model);
         }
-        [HttpDelete]
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteProcedure(int id)
         {
             ProcedureService service = new ProcedureService();

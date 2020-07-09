@@ -24,7 +24,7 @@
                     <li>@Html.ActionLink("Diagnoses", "Index", "Diagnosis")</li>
                     <li>@Html.ActionLink("Procedures", "Index", "Procedure")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                   
+
                 </ul>
                 <form class="navbar-form navbar-right" action="/action_page.php">
                     <div class="input-group">
@@ -42,9 +42,10 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <footer  style="bottom:0;position:fixed;">
+        <footer style="bottom:0;position:fixed;">
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
             @Html.ActionLink("Contact", "Contact", "Home")
+            @Html.ActionLink("Role", "Index", "Role")
             @Html.Partial("_LoginPartial")
         </footer>
     </div>

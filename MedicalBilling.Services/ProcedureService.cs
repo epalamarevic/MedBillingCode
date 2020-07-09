@@ -61,10 +61,15 @@ namespace MedicalBilling.Services
         }
 
         //Remove Procedure by Id
+        
         public void RemoveProcedure (int procedureId)
         {
-            var entity = _ctx.Procedures.Single(e => e.ProcedureId == procedureId);
-            _ctx.SaveChanges();
+            using(var _ctx = new ApplicationDbContext())
+            {
+                var entity = _ctx.Procedures.Single(e => e.ProcedureId == procedureId);
+                _ctx.Procedures.Remove(entity);
+                _ctx.SaveChanges();
+            }
         }
         
 

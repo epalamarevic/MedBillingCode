@@ -11,11 +11,11 @@ using System.Web.Mvc;
 
 namespace MedicalBilling.WebMVC.Controllers
 {
-    
+
     public class DiagnosisController : Controller
     {
         private ApplicationDbContext _ctx = new ApplicationDbContext();
-       
+
         // GET: LIST of Diagnosis
         public ActionResult Index()
         {
@@ -23,15 +23,14 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = service.GetAllDiagnoses();
             return View(model);
         }
-        
-        [Authorize(Roles = "admin")]
+
         //CREATE diagnosis
         public ActionResult Create()
         {
             return View();
         }
-       [HttpPost]
-       public ActionResult Create(DiagnosisCreate model)
+        [HttpPost]
+        public ActionResult Create(DiagnosisCreate model)
         {
             DiagnosisService service = new DiagnosisService();
             if (!ModelState.IsValid)
@@ -39,19 +38,25 @@ namespace MedicalBilling.WebMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             service.CreateDiagnosis(model);
-                return View(model);
-           
+            return View(model);
+
         }
 
-       // GET DIAGNOSIS DETAILS/ID
-       [HttpGet]
-       public ActionResult Details(int id)
+        // GET DIAGNOSIS DETAILS/ID
+        [HttpGet]
+        public ActionResult Details(int id)
         {
             DiagnosisService service = new DiagnosisService();
             var model = service.GetDiagnosisById(id);
             return View(model);
         }
 
+        public ActionResult DiagnosisDetail(int id)
+        {
+            DiagnosisService service = new DiagnosisService();
+            var model = service.GetDiagnosisById(id);
+            return View(model);
+        }
 
         //EDIT DIAGNOSIS 
         public ActionResult Edit(int id)
@@ -91,7 +96,7 @@ namespace MedicalBilling.WebMVC.Controllers
         {
             DiagnosisService service = new DiagnosisService();
             var model = service.GetDiagnosisById(id);
-            return View(model);
+            return RedirectToAction("Index");
         }
         [HttpDelete]
         public ActionResult DeleteDiagnosis(int id)

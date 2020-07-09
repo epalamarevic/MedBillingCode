@@ -68,6 +68,7 @@ namespace MedicalBilling.Services
         public void RemoveDiagnosis(int diagnosisId)
         {
             var entity = _ctx.Diagnoses.Single(e => e.DiagnosisId == diagnosisId);
+            _ctx.Diagnoses.Remove(entity);
             _ctx.SaveChanges();
         }
     }

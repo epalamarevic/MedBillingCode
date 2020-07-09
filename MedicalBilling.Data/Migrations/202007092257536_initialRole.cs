@@ -3,7 +3,7 @@ namespace MedicalBilling.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class initialRole : DbMigration
     {
         public override void Up()
         {
@@ -38,6 +38,7 @@ namespace MedicalBilling.Data.Migrations
                         ICD10Code = c.String(),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         ProcedureId = c.Int(nullable: false),
+                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.ProcedureCodeId)
                 .ForeignKey("dbo.Procedure", t => t.ProcedureId, cascadeDelete: true)
@@ -59,6 +60,7 @@ namespace MedicalBilling.Data.Migrations
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -82,6 +84,7 @@ namespace MedicalBilling.Data.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        FullName = c.String(nullable: false),
                         Email = c.String(),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

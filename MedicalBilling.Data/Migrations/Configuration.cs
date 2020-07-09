@@ -10,7 +10,6 @@ namespace MedicalBilling.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "MedicalBilling.Data.ApplicationDbContext";
         }
 
         protected override void Seed(MedicalBilling.Data.ApplicationDbContext context)
