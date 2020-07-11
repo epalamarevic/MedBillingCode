@@ -4,6 +4,7 @@ using MedicalBilling.Models.ProcedureModel;
 using MedicalBilling.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -23,7 +24,7 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
 
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles ="Admin")]
         //CREATE Procedure
         public ActionResult Create()
         {
@@ -38,7 +39,7 @@ namespace MedicalBilling.WebMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             service.CreateProcedure(model);
-            return View(model);
+            return RedirectToAction("Index");
         }
 
         // GET Procedure DETAILS/ID
@@ -63,33 +64,35 @@ namespace MedicalBilling.WebMVC.Controllers
             };
             return View(model);
         }
-        [HttpPut]
-        public ActionResult Edit(int id, ProcedureDetail detail)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Procedure procedure)
         {
-            if (ModelState.IsValid) return View(detail);
-
-            if (detail.ProcedureId != id)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Id Mismatch");
-                return View(detail);
+                _ctx.Entry(procedure).State = EntityState.Modified;
+                _ctx.SaveChanges();
+                return RedirectToAction("Index");
             }
-            var service = new ProcedureService();
-            service.UpdateProcedure(detail);
-            return View(detail);
+            return View(procedure);
         }
 
         //DELETE Procedure by ID
         public ActionResult Delete(int id)
         {
-            var service = new ProcedureService();
+            ProcedureService service = new ProcedureService();
             var model = service.GetProcedureById(id);
             return View(model);
         }
-        [HttpDelete]
-        public ActionResult DeleteProcedure(int id)
-        {
-            ProcedureService service = new ProcedureService();
-            service.RemoveProcedure(id);
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        { 
+            Procedure procedure = _ctx.Procedures.Find(id);
+           if(procedure != null) _ctx.Procedures.Remove(procedure);
+            _ctx.SaveChanges();
             return RedirectToAction("Index");
         }
 

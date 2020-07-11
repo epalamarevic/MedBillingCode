@@ -52,19 +52,24 @@ namespace MedicalBilling.Services
         }
 
         //Update Procedure
-        public void UpdateProcedure(ProcedureDetail detail)
+        public bool UpdateProcedure(ProcedureDetail detail)
         {
             var entity = _ctx.Procedures.Single(e => e.ProcedureId == detail.ProcedureId);
             entity.Name = detail.Name;
             entity.Description = detail.Description;
-            _ctx.SaveChanges();
+            return _ctx.SaveChanges() == 1;
         }
 
         //Remove Procedure by Id
-        public void RemoveProcedure (int procedureId)
+        
+        public bool RemoveProcedure (int procedureId)
         {
-            var entity = _ctx.Procedures.Single(e => e.ProcedureId == procedureId);
-            _ctx.SaveChanges();
+            using(var _ctx = new ApplicationDbContext())
+            {
+                var entity = _ctx.Procedures.Single(e => e.ProcedureId == procedureId);
+                _ctx.Procedures.Remove(entity);
+                return _ctx.SaveChanges() == 1;
+            }
         }
         
 

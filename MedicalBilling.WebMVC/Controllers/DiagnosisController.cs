@@ -4,6 +4,7 @@ using MedicalBilling.Models.DiagnosisModels;
 using MedicalBilling.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -11,11 +12,11 @@ using System.Web.Mvc;
 
 namespace MedicalBilling.WebMVC.Controllers
 {
-    
+
     public class DiagnosisController : Controller
     {
         private ApplicationDbContext _ctx = new ApplicationDbContext();
-       
+
         // GET: LIST of Diagnosis
         public ActionResult Index()
         {
@@ -23,15 +24,15 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = service.GetAllDiagnoses();
             return View(model);
         }
-        
-        [Authorize(Roles = "admin")]
+
         //CREATE diagnosis
+
         public ActionResult Create()
         {
             return View();
         }
-       [HttpPost]
-       public ActionResult Create(DiagnosisCreate model)
+        [HttpPost]
+        public ActionResult Create(DiagnosisCreate model)
         {
             DiagnosisService service = new DiagnosisService();
             if (!ModelState.IsValid)
@@ -39,19 +40,25 @@ namespace MedicalBilling.WebMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             service.CreateDiagnosis(model);
-                return View(model);
-           
+            return RedirectToAction("Index");
+
         }
 
-       // GET DIAGNOSIS DETAILS/ID
-       [HttpGet]
-       public ActionResult Details(int id)
+        // GET DIAGNOSIS DETAILS/ID
+        [HttpGet]
+        public ActionResult Details(int id)
         {
             DiagnosisService service = new DiagnosisService();
             var model = service.GetDiagnosisById(id);
             return View(model);
         }
 
+        public ActionResult DiagnosisDetail(int id)
+        {
+            DiagnosisService service = new DiagnosisService();
+            var model = service.GetDiagnosisById(id);
+            return View(model);
+        }
 
         //EDIT DIAGNOSIS 
         public ActionResult Edit(int id)
@@ -68,21 +75,15 @@ namespace MedicalBilling.WebMVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, DiagnosisDetail detail)
+        public ActionResult Edit(Diagnosis diagnosis)
         {
-            if (ModelState.IsValid) return View(detail);
-
-            if(detail.DiagnosisId != id)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Id Mismatch");
-                return View(detail);
-            }
-            DiagnosisService service = new DiagnosisService();
-            if (service.UpdateDiagnosis(detail))
-            {
+                _ctx.Entry(diagnosis).State = EntityState.Modified;
+                _ctx.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(detail);
+            return View(diagnosis);
         }
 
 

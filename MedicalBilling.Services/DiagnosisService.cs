@@ -65,10 +65,11 @@ namespace MedicalBilling.Services
 
         //DELETE
         //Remove Diagnosis by Id
-        public void RemoveDiagnosis(int diagnosisId)
+        public bool RemoveDiagnosis(int diagnosisId)
         {
             var entity = _ctx.Diagnoses.Single(e => e.DiagnosisId == diagnosisId);
-            _ctx.SaveChanges();
+            _ctx.Diagnoses.Remove(entity);
+            return _ctx.SaveChanges() == 1;
         }
     }
 }

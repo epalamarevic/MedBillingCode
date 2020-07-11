@@ -3,16 +3,16 @@ namespace MedicalBilling.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first : DbMigration
+    public partial class rmoveProcedreCodeName : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.ProcedureCode", "Name", c => c.String());
+            DropColumn("dbo.ProcedureCode", "Name");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.ProcedureCode", "Name");
+            AddColumn("dbo.ProcedureCode", "Name", c => c.String());
         }
     }
 }

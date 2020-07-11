@@ -4,6 +4,7 @@ using MedicalBilling.Models.DiagnosticCodeModels;
 using MedicalBilling.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -23,7 +24,7 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
 
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles ="Admin")]
         //CREATE diagnosisCode
         public ActionResult Create()
         {
@@ -39,7 +40,7 @@ namespace MedicalBilling.WebMVC.Controllers
 
             }
             service.CreateDiagnosisCode(model);
-            return View(model);
+            return RedirectToAction("Index");
         }
 
         // GET DIAGNOSTIC CODE DETAILS/ID
@@ -66,17 +67,15 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
         [HttpPut]
-        public ActionResult Edit(int id, DiagnosticCodeDetail detail)
+        public ActionResult Edit(DiagnosticCode diagnosticCode)
         {
-            if (ModelState.IsValid) return View(detail);
-            if(detail.DiagnosticCodeId != id)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Id Mismatch");
-                return View(detail);
+                _ctx.Entry(diagnosticCode).State = EntityState.Modified;
+                _ctx.SaveChanges();
+                return RedirectToAction("Index");
             }
-            var service = new DiagnosticCodeService();
-            service.UpdateDiagnosticCode(detail);
-            return View(detail);
+            return View(diagnosticCode);
 
         }
 
@@ -90,8 +89,9 @@ namespace MedicalBilling.WebMVC.Controllers
         [HttpDelete]
         public ActionResult DeleteDiagnoticCode(int id)
         {
-            var service = new DiagnosticCodeService();
-            service.RemoveDiagnosticCode(id);
+            DiagnosticCode diagnosticCode = _ctx.DiagnosticCodes.Find(id);
+            if (diagnosticCode != null) _ctx.DiagnosticCodes.Remove(diagnosticCode);
+            _ctx.SaveChanges();
             return RedirectToAction("Index");
         }
 
