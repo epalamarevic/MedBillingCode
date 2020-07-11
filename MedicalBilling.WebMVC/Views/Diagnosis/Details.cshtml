@@ -39,5 +39,6 @@
 <p>
     @Html.ActionLink("ICD-10Code", "Details", "DiagnosisCode", new { id = Model.DiagnosisId }, null) |
     @Html.ActionLink("Edit", "Edit", new { id = Model.DiagnosisId }) |
+    @Html.ActionLink("Delete","Delete", new { id=Model.DiagnosisId})|
     @Html.ActionLink("Back to List", "Index")
 </p>

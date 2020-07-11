@@ -4,6 +4,7 @@ using MedicalBilling.Models.ProcedureCodeModels;
 using MedicalBilling.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -23,7 +24,7 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
 
-        [Authorize(Roles ="admin")]
+        [Authorize(Roles ="Admin")]
         //CREATE ProcedureCode
         public ActionResult Create()
         {
@@ -39,7 +40,7 @@ namespace MedicalBilling.WebMVC.Controllers
 
             }
             service.CreateProcedureCode(model);
-            return View(model);
+            return RedirectToAction("Index");
         }
 
         // GET ProcedureCode DETAILS/ID
@@ -59,7 +60,6 @@ namespace MedicalBilling.WebMVC.Controllers
             var detail = service.GetProcedureCodeById(id);
             var model = new ProcedureCodeDetail
             {
-                Name = detail.Name,
                 ProcedureCodeId = detail.ProcedureCodeId,
                 ICD10Code = detail.ICD10Code,
                 Price = detail.Price,
@@ -67,18 +67,16 @@ namespace MedicalBilling.WebMVC.Controllers
             };
             return View(model);
         }
-        [HttpPut]
-        public ActionResult Edit(int id, ProcedureCodeDetail detail)
+        [HttpPost]
+        public ActionResult Edit(ProcedureCode procedureCode)
         {
-            if (ModelState.IsValid) return View(detail);
-            if (detail.ProcedureCodeId != id)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Id Mismatch");
-                return View(detail);
+                _ctx.Entry(procedureCode).State = EntityState.Modified;
+                _ctx.SaveChanges();
+                return RedirectToAction("Index");
             }
-            var service = new ProcedureCodeService();
-            service.UpdateProcedureCode(detail);
-            return View(detail);
+            return View(procedureCode);
         }
 
         //DELETE procedureCode by ID
@@ -88,11 +86,14 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = service.GetProcedureCodeById(id);
             return View(model);
         }
-        [HttpDelete]
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteProcedureCode(int id)
         {
-            var service = new ProcedureCodeService();
-            service.RemoveProcedureCode(id);
+            ProcedureCode procedureCode = _ctx.ProcedureCodes.Find(id);
+            if (procedureCode != null) _ctx.ProcedureCodes.Remove(procedureCode);
+            _ctx.SaveChanges();
             return RedirectToAction("Index");
         }
 

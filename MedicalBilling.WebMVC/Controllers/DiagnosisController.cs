@@ -4,6 +4,7 @@ using MedicalBilling.Models.DiagnosisModels;
 using MedicalBilling.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -25,6 +26,7 @@ namespace MedicalBilling.WebMVC.Controllers
         }
 
         //CREATE diagnosis
+
         public ActionResult Create()
         {
             return View();
@@ -38,7 +40,7 @@ namespace MedicalBilling.WebMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             service.CreateDiagnosis(model);
-            return View(model);
+            return RedirectToAction("Index");
 
         }
 
@@ -73,21 +75,15 @@ namespace MedicalBilling.WebMVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, DiagnosisDetail detail)
+        public ActionResult Edit(Diagnosis diagnosis)
         {
-            if (ModelState.IsValid) return View(detail);
-
-            if(detail.DiagnosisId != id)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Id Mismatch");
-                return View(detail);
-            }
-            DiagnosisService service = new DiagnosisService();
-            if (service.UpdateDiagnosis(detail))
-            {
+                _ctx.Entry(diagnosis).State = EntityState.Modified;
+                _ctx.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(detail);
+            return View(diagnosis);
         }
 
 
@@ -96,7 +92,7 @@ namespace MedicalBilling.WebMVC.Controllers
         {
             DiagnosisService service = new DiagnosisService();
             var model = service.GetDiagnosisById(id);
-            return RedirectToAction("Index");
+            return View(model);
         }
         [HttpDelete]
         public ActionResult DeleteDiagnosis(int id)

@@ -32,7 +32,6 @@ namespace MedicalBilling.Services
             var procedureCodeEntities = _ctx.ProcedureCodes.ToList();
             var procedureCodeList = procedureCodeEntities.Select(pc => new ProcedureCodeDetail
             {
-                Name = pc.Name,
                 ProcedureCodeId = pc.ProcedureCodeId,
                 ICD10Code = pc.ICD10Code,
                 Price = pc.Price,
@@ -47,7 +46,6 @@ namespace MedicalBilling.Services
             var procedureCodeEntity = _ctx.ProcedureCodes.Find(procedureCodeId);
             var procedureCodeDetails = new ProcedureCodeDetail
             {
-                Name = procedureCodeEntity.Name,
                 ProcedureCodeId = procedureCodeEntity.ProcedureCodeId,
                 ICD10Code = procedureCodeEntity.ICD10Code,
                 Price = procedureCodeEntity.Price,

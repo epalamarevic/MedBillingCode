@@ -63,6 +63,10 @@
     <Compile Include="Migrations\202007092257536_initialRole.Designer.cs">
       <DependentUpon>202007092257536_initialRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007111351222_rmoveProcedreCodeName.cs" />
+    <Compile Include="Migrations\202007111351222_rmoveProcedreCodeName.Designer.cs">
+      <DependentUpon>202007111351222_rmoveProcedreCodeName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,6 +77,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202007092257536_initialRole.resx">
       <DependentUpon>202007092257536_initialRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007111351222_rmoveProcedreCodeName.resx">
+      <DependentUpon>202007111351222_rmoveProcedreCodeName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
