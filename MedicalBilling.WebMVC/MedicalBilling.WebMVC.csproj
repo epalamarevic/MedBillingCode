@@ -271,7 +271,6 @@
     <Content Include="Views\DiagnosisCode\Details.cshtml" />
     <Content Include="Views\DiagnosisCode\Edit.cshtml" />
     <Content Include="Views\DiagnosisCode\Delete.cshtml" />
-    <Content Include="Views\Diagnosis\DiagnosisDetail.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />

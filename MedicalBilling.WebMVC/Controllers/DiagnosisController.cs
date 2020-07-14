@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -25,6 +26,17 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
 
+        //create method search 
+        [HttpGet]
+        public async Task<ActionResult> Index(string search)
+        {
+            var quarey = from d in _ctx.Diagnoses select d;
+            if (!string.IsNullOrEmpty(search))
+            {
+                quarey = quarey.Where(q => q.Name.Contains(search));
+            }
+            return View(await quarey.ToListAsync());
+        }
         //CREATE diagnosis
 
         public ActionResult Create()
@@ -53,12 +65,7 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult DiagnosisDetail(int id)
-        {
-            DiagnosisService service = new DiagnosisService();
-            var model = service.GetDiagnosisById(id);
-            return View(model);
-        }
+        
 
         //EDIT DIAGNOSIS 
         public ActionResult Edit(int id)
