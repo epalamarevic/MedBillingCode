@@ -2,16 +2,20 @@
 @{
     ViewBag.Title = "My Error Page";
     Layout = null;
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/bootstrap")
 }
-    <div class="container">
+
+<body>
+    <div class="container" style="background-color:white">
         <div class="row">
             <div class="col-md-6">
-                <div class="img-fluid">
-                    <img src="https://ih1.redbubble.net/image.1177817982.5401/st,small,845x845-pad,1000x1000,f8f8f8.jpg" width="500" height="500" />
+                <div class="img-responsive">
+                    <img src="https://i.pinimg.com/originals/f2/e1/44/f2e14499abbcc3961ee2a7e55239cd37.jpg" class="image" alt="sadmaskemoji" />
                 </div>
             </div>
-            <div class="col-md-6">
-                <div style="text-align:center; padding:10px; color:darkred ">
+            <div class="col-md-6 error-text">
+                <div style="text-align:center; padding:5px; color:red ">
                     <h1>
                         OOPS PAGE NOT FOUND!
                     </h1>
@@ -31,4 +35,4 @@
             </div>
         </div>
     </div>
-    
+</body>
