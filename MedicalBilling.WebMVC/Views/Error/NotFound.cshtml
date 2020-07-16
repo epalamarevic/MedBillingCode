@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "My Error Page";
+    Layout = null;
+}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="img-fluid">
+                    <img src="https://ih1.redbubble.net/image.1177817982.5401/st,small,845x845-pad,1000x1000,f8f8f8.jpg" width="500" height="500" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div style="text-align:center; padding:10px; color:darkred ">
+                    <h1>
+                        OOPS PAGE NOT FOUND!
+                    </h1>
+                    <br />
+                    <h2>
+                        We are working on it.
+                    </h2>
+                    <br />
+                    <h2>
+                        Please try the option below.
+                    </h2>
+                    <br />
+                    <h3>@Html.ActionLink("Go Back To Home Page", "Index", "Home")</h3> @*link name , action method name , controller name*@
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+    
