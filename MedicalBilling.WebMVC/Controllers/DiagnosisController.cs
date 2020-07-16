@@ -19,24 +19,16 @@ namespace MedicalBilling.WebMVC.Controllers
         private ApplicationDbContext _ctx = new ApplicationDbContext();
 
         // GET: LIST of Diagnosis
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
             var service = new DiagnosisService();
             var model = service.GetAllDiagnoses();
-            return View(model);
+            return View(model.Where(x => x.Name.Contains(search)).ToList());
+            
         }
 
         //create method search 
-        [HttpGet]
-        public async Task<ActionResult> Index(string search)
-        {
-            var quarey = from d in _ctx.Diagnoses select d;
-            if (!string.IsNullOrEmpty(search))
-            {
-                quarey = quarey.Where(q => q.Name.Contains(search));
-            }
-            return View(await quarey.ToListAsync());
-        }
+        
         //CREATE diagnosis
 
         public ActionResult Create()
