@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,13 +19,16 @@ namespace MedicalBilling.WebMVC.Controllers
         private ApplicationDbContext _ctx = new ApplicationDbContext();
 
         // GET: LIST of Diagnosis
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
             var service = new DiagnosisService();
             var model = service.GetAllDiagnoses();
-            return View(model);
+            return View(model.Where(x => x.Name.Contains(search)).ToList());
+            
         }
 
+        //create method search 
+        
         //CREATE diagnosis
 
         public ActionResult Create()
@@ -53,12 +57,7 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult DiagnosisDetail(int id)
-        {
-            DiagnosisService service = new DiagnosisService();
-            var model = service.GetDiagnosisById(id);
-            return View(model);
-        }
+        
 
         //EDIT DIAGNOSIS 
         public ActionResult Edit(int id)

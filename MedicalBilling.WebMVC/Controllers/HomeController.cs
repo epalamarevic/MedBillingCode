@@ -8,6 +8,7 @@ namespace MedicalBilling.WebMVC.Controllers
 {
     public class HomeController : Controller
     {
+        [HandleError]
         public ActionResult Index()
         {
             return View();
