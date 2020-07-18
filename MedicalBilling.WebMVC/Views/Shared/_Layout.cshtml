@@ -26,9 +26,9 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
 
                 </ul>
-                <form class="navbar-form navbar-right" action="~/Diagnosis">
+                <form class="navbar-form navbar-right" action="~/Diagnosis/Index1">
                     <div class="input-group">
-                        @using (Html.BeginForm("Index", "Diagnosis", FormMethod.Get))
+                        @using (Html.BeginForm("Index1", "Diagnosis", FormMethod.Get))
                         {
                             @Html.TextBox("search")<input type="submit" value="Search" />
                         }

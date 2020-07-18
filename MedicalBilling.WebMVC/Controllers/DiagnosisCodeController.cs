@@ -48,7 +48,7 @@ namespace MedicalBilling.WebMVC.Controllers
         {
             DiagnosticCodeService service = new DiagnosticCodeService();
             var model = service.GetDiagnosticCodeById(id);
-            return View(model);
+            return PartialView("Details", model);
         }
 
 

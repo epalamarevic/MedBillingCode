@@ -19,18 +19,29 @@ namespace MedicalBilling.WebMVC.Controllers
         private ApplicationDbContext _ctx = new ApplicationDbContext();
 
         // GET: LIST of Diagnosis
-        public ActionResult Index(string search)
+        public ActionResult Index()
         {
             var service = new DiagnosisService();
             var model = service.GetAllDiagnoses();
-            return View(model.Where(x => x.Name.Contains(search)).ToList());
+            return View(model);
             
         }
 
         //create method search 
-        
-        //CREATE diagnosis
+        public ActionResult Index1(string search)
+        {
+            var service = new DiagnosisService();
+            var model = service.GetAllDiagnoses();
+            if (!String.IsNullOrEmpty(search))
+            {
 
+                return View(model.Where(e => e.Name.Contains(search)).ToList());
+            }
+            return RedirectToAction("NotFound", "Error");
+        }
+
+        //CREATE diagnosis
+        [Authorize(Roles ="Admin")]
         public ActionResult Create()
         {
             return View();
