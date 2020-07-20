@@ -7,13 +7,13 @@ namespace MedicalBilling.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class rmoveProcedreCodeName : IMigrationMetadata
+    public sealed partial class addedmoredetails : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(rmoveProcedreCodeName));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addedmoredetails));
         
         string IMigrationMetadata.Id
         {
-            get { return "202007111351222_rmoveProcedreCodeName"; }
+            get { return "202007202310207_addedmoredetails"; }
         }
         
         string IMigrationMetadata.Source

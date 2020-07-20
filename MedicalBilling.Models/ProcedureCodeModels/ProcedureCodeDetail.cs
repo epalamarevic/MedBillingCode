@@ -10,7 +10,6 @@ namespace MedicalBilling.Models.ProcedureCodeModels
     {
 
         public int ProcedureId { get; set; }
-        public string Name { get; set; }
         public int ProcedureCodeId { get; set; }
         public string ICD10Code { get; set; }
 

@@ -13,5 +13,7 @@ namespace MedicalBilling.Data.Entities
         public int ProcedureId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Preperation { get; set; }
+        public string Risks { get; set; }
     }
 }

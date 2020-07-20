@@ -48,7 +48,9 @@ namespace MedicalBilling.Services
             {
                 DiagnosisId = diagnosisEntity.DiagnosisId,
                 Name = diagnosisEntity.Name,
-                Description = diagnosisEntity.Description
+                Description = diagnosisEntity.Description,
+                Symptoms = diagnosisEntity.Symptoms,
+                Treatments = diagnosisEntity.Treatments
             };
            
         }
@@ -60,6 +62,8 @@ namespace MedicalBilling.Services
             var entity = _ctx.Diagnoses.Single(e => e.DiagnosisId == detail.DiagnosisId);
             entity.Name = detail.Name;
             entity.Description = detail.Description;
+            entity.Symptoms = detail.Symptoms;
+            entity.Treatments = detail.Treatments;
            return _ctx.SaveChanges() == 1;
         }
 

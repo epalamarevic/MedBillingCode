@@ -46,7 +46,10 @@ namespace MedicalBilling.Services
             {
                 ProcedureId = procedureEntity.ProcedureId,
                 Name = procedureEntity.Name,
-                Description = procedureEntity.Description
+                Description = procedureEntity.Description,
+                Preperation = procedureEntity.Preperation,
+                Risks = procedureEntity.Risks
+
             };
             return procedureDetail;
         }
@@ -57,6 +60,8 @@ namespace MedicalBilling.Services
             var entity = _ctx.Procedures.Single(e => e.ProcedureId == detail.ProcedureId);
             entity.Name = detail.Name;
             entity.Description = detail.Description;
+            entity.Preperation = detail.Preperation;
+            entity.Risks = detail.Risks;
             return _ctx.SaveChanges() == 1;
         }
 

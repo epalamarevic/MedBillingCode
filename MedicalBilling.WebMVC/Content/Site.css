@@ -1,7 +1,6 @@
 ﻿body {
-    background-color:ghostwhite;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -17,16 +16,35 @@
 .dl-horizontal dt {
     white-space: normal;
 }
-
-
+.navbar-brand,
+.nav navbar-nav {
+    color: black;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 580px;
 }
+text-box {
+    width:100%;
+}
+footer ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right:2em;
+    padding:0;
+}
+.info{
+    padding:0;
+    margin:0;
+    border-top:solid black;
+    width:100%;
+}
 
-.image {
+
+/*ERROR PAGE*/
+.image{
     width:500px;
     height:500px;
 }

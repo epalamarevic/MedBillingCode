@@ -46,9 +46,10 @@ namespace MedicalBilling.WebMVC.Controllers
         // GET ProcedureCode DETAILS/ID
         public ActionResult Details(int id)
         {
+           
             var service = new ProcedureCodeService();
             var model = service.GetProcedureCodeById(id);
-            return View(model);
+            return PartialView("Details", model);
         }
 
 

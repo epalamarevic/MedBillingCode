@@ -3,31 +3,46 @@
     
 }
 
-<div class="text-secondary text-center">
-    <h1 style="font-family:Cambria;font-size:65px">Medical Billing Code</h1>
+<div class="text-right">
+    <h1 style="font-family:Cambria;font-size:50px;color:black">Medical Billing Code</h1>
+    <p>Obtain Medical ICD-10 codes to determine pricing of a diagnosis or procedure.</p>
 </div>
-<br/>
-<br/>
-<p>
-    @using (Html.BeginForm("Index1", "Diagnosis", FormMethod.Get))
-    {
-        <b>Diagnosis/Procedure:</b> @Html.TextBox("search")<input type="submit" value="Search"/> 
-    }
-</p>
 
-<br/>
-<br/>
-<br/>
 <div class="row">
-    <div class="col-md-12">
-        <h4>How much do you spend on healthcare? </h4>
-        <h4>Do you want to know the cost of seeing a provider?</h4>
+    <div class="col-md-12 text-center">
         <p>
-            Medical Billing Code is an organization that provides public users the ability to find diagnostic codes in relation to health care diagnoses and procedures.
-            These diagnoses and procedures provide you with an estimated price for seeing a provider regarding the concerns you searched for.
-            It is ment to help consumers with any billing questions prior to seeing a physician.
-            Start by searching for a diagnosis. 
-        </p>
-       
+            @using (Html.BeginForm("Index", "Procedure", FormMethod.Get))
+            {
+                <input type="submit" value="Search" />
+            }
+                @using (Html.BeginForm("Index", "Diagnosis", FormMethod.Get))
+                {
+                    <b>Diagnosis/Procedure:</b> @Html.TextBox("search")<input type="submit" value="Search" />
+                }
+            </p>
     </div>
+    <div class="col-md-6">
+        <h4>Who are we?</h4>
+        <p>
+            We are an organizational source that provides public users the ability to find diagnostic codes(ICD-10) in relation to health care diagnoses and procedures.
+            These diagnoses and procedures provide you with an estimated price for the typical diagnosis.
+            It is ment to help consumers with any billing questions prior to seeing a physician.
+            Start by searching for a diagnosis.
+        </p>
+    </div>
+
+</div>
+
+    <div>
+        <h3>International Classification of Diseases (ICD)</h3>
+        <h4>What is it?</h4>
+        <p>The World Health Organization(WHO) authorized the publication of the International Classification of DiseasesExternal 10th Revision (ICD-10), which was implemented for mortality coding and classification from death certificates in the U.S. in 1999.
+        The U.S. developed a Clinical Modification (ICD-10-CM) for medical diagnoses based on WHO’s ICD-10 and developed a new Procedure Coding System (ICD-10-PCS) for inpatient procedures.
+        </p>
+    </div>
+<div>
+    <h3>Why?</h3>
+    <p>
+
+    </p>
 </div>

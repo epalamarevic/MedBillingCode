@@ -19,26 +19,31 @@ namespace MedicalBilling.WebMVC.Controllers
         private ApplicationDbContext _ctx = new ApplicationDbContext();
 
         // GET: LIST of Diagnosis
+        [HttpGet]
         public ActionResult Index()
         {
+
             var service = new DiagnosisService();
             var model = service.GetAllDiagnoses();
             return View(model);
-            
         }
 
-        //create method search 
-        public ActionResult Index1(string search)
+        [HttpPost]
+        public ActionResult Index(string search)
         {
             var service = new DiagnosisService();
             var model = service.GetAllDiagnoses();
-            if (!String.IsNullOrEmpty(search))
+            
+           if (!String.IsNullOrEmpty(search))
             {
 
-                return View(model.Where(e => e.Name.Contains(search)).ToList());
+                return View(model.Where(e => e.Name.Contains(search)|| search == null).ToList());
             }
             return RedirectToAction("NotFound", "Error");
+
         }
+
+        
 
         //CREATE diagnosis
         [Authorize(Roles ="Admin")]
@@ -79,7 +84,10 @@ namespace MedicalBilling.WebMVC.Controllers
             {
                 DiagnosisId = detail.DiagnosisId,
                 Name = detail.Name,
-                Description = detail.Description
+                Description = detail.Description,
+                Symptoms = detail.Symptoms,
+                Treatments = detail.Treatments
+               
             };
             return View(model);
         }
