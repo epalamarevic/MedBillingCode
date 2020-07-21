@@ -4,47 +4,32 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
 <div>
-    <h4>DiagnosticCodeDetail</h4>
-    <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DiagnosticCodeId)
+        <dt style="font-size:25px">
+            @Html.DisplayNameFor(model => model.ICD10Code):
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DiagnosticCodeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ICD10Code)
-        </dt>
-
-        <dd>
+        <dd style="font-size:20px">
             @Html.DisplayFor(model => model.ICD10Code)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
+        <dt style="font-size:25px">
+            @Html.DisplayNameFor(model => model.Price):
         </dt>
 
-        <dd>
+        <dd style="font-size:20px">
             @Html.DisplayFor(model => model.Price)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DiagnosisId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DiagnosisId)
-        </dd>
-
     </dl>
 </div>
+<br />
+<br />
+<br />
+<br />
+<div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new {id = Model.DiagnosticCodeId}) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index","Diagnosis")
 </p>
+    </div>

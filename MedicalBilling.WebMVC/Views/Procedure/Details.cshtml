@@ -4,38 +4,44 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Procedure Details</h2>
+    <div>
+        <dl class="dl-horizontal">
+            <dd style="font-size:40px; margin-top:2em">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </dl>
+    </div>
 
-<div>
-    
-    <hr />
-    <dl class="dl-horizontal">
-     
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <div>
+                <dl class="dl-horizontal">
+          
+                    <dt style="font-size:25px">
+                        @Html.DisplayNameFor(model => model.Description):
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                    <dd style="font-size:20px">
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                    <dt style="font-size:25px">
+                        @Html.DisplayNameFor(model => model.Preperation):
+                    </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                    <dd style="font-size:20px">
+                        @Html.DisplayFor(model => model.Preperation)
+                    </dd>
 
-    </dl>
-</div>
-<p>
+                    <dt style="font-size:25px">
+                        @Html.DisplayNameFor(model => model.Risks):
+                    </dt>
 
-    @{Html.RenderAction("Details", "ProcedureCode", new { id = Model.ProcedureId });}
-</p>
-<p>
-    
-      @Html.ActionLink("Delete", "Delete", new { id = Model.ProcedureId })|
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProcedureId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                    <dd style="font-size:20px">
+                        @Html.DisplayFor(model => model.Risks)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+
+                @{Html.RenderAction("Details", "ProcedureCode", new { id = Model.ProcedureId });}
+            </p>

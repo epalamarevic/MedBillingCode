@@ -5,30 +5,28 @@
 
 }
 
-<h4>ICD-10 Medical Code</h4>
 <div>
-    <hr />
     <dl class="dl-horizontal">
        
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ICD10Code)
+        <dt style="font-size:25px">
+            @Html.DisplayNameFor(model => model.ICD10Code):
         </dt>
 
-        <dd>
+        <dd style="font-size:20px">
             @Html.DisplayFor(model => model.ICD10Code)
         </dd>
+    </dl>
 </div>
 <div>
-    <h4>Estimated Price</h4>
-    <p>*Please contact medical provider and health insurer, as prices are subject change.</p>
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
+        <dt style="font-size:25px">
+            @Html.DisplayNameFor(model => model.Price):
         </dt>
 
-        <dd>
+        <dd style="font-size:20px">
             @Html.DisplayFor(model => model.Price)
+
+            <p>*prices are subject to change</p>
         </dd>
 
     </dl>
@@ -38,6 +36,5 @@
 <br />
 <br />
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProcedureCodeId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index","Procedure")
 </p>

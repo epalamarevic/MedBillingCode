@@ -17,15 +17,17 @@
     white-space: normal;
 }
 .navbar-brand,
-.nav navbar-nav {
+.nav navbar-nav{
     color: black;
 }
+   
+
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 580px;
-}
+    input,
+    select,
+    textarea {
+        max-width: 580px;
+    }
 text-box {
     width:100%;
 }
