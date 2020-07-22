@@ -3,28 +3,28 @@
     ViewBag.Title = "Index";
 }
 
-    <h2>
+    <h1>
         Diagnoses
         @Html.ActionLink("*", "Create")
-    </h2>
+    </h1>
 
 
 <table class="table">
     <tr>
-        <th>
+        <th stye="font-size:20px">
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
+        <th stye="font-size:20px">
             @Html.DisplayNameFor(model => model.Description)
         </th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            <td stye="font-size:20px">
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
+            <td stye="font-size:20px">
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>

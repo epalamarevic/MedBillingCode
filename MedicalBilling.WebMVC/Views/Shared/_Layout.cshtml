@@ -9,14 +9,14 @@
 
 </head>
 <body>
-    <div class="navbar  navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top" style="background-color:lightsteelblue">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>*@
                 @Html.ActionLink("Medical Billing Code", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
@@ -27,31 +27,73 @@
                 <form class="navbar-form navbar-right" action="~/">
                     <div class="input-group">
                         {
-                            @Html.TextBox("search")<input type="submit" value="Search" />
+                        @Html.TextBox("search")<input type="submit" value="Search" />
                         }
                     </div>
                 </form>
             </div>
-           
+
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <footer style="bottom:0;position:fixed;">
-            <div class="info">
-                <ul>
-                    <li>&copy; @DateTime.Now.Year - My ASP.NET Application</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Role", "Index", "Role")</li>
-                    <li>@Html.Partial("_LoginPartial")</li>
-                    <li id="icon"><a href="#"><img src="https://cdn2.iconfinder.com/data/icons/minimalism/512/twitter.png" width="30" height="30"></a></li>
-                    <li id="icon"><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Linkedin.svg/1200px-Linkedin.svg.png" width="30" height="30"></a></li>
-                    <li id="icon"><a href="#"><img src="https://cdn0.iconfinder.com/data/icons/social-network-7/50/3-512.png" width="30" height="30"></a></li>
-                </ul>
-                </div>
-        </footer>
-    </div>
+
+
+    @*<div class="container body-content">
+            @RenderBody()
+            <footer style="bottom:0;position:fixed;">
+                <div class="info">
+                    <ul>
+                        <li>&copy; @DateTime.Now.Year - My ASP.NET Application</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Role", "Index", "Role")</li>
+                        <li>@Html.Partial("_LoginPartial")</li>
+                        <li id="icon"><a href="#"><img src="https://cdn2.iconfinder.com/data/icons/minimalism/512/twitter.png" width="30" height="30"></a></li>
+                        <li id="icon"><a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Linkedin.svg/1200px-Linkedin.svg.png" width="30" height="30"></a></li>
+                        <li id="icon"><a href="#"><img src="https://cdn0.iconfinder.com/data/icons/social-network-7/50/3-512.png" width="30" height="30"></a></li>
+                    </ul>
+                    </div>
+            </footer>
+        </div>*@
+
+    @RenderBody()
+<footer class="footer">
+    <nav class="footer_nav shuffle shuffled">
+        <section class="footer_col footer_col">
+            <h4 class="footer_col Logo">MedicalBillingCode</h4>
+        </section>
+        <section class="footer_col footer_col">
+            <h4 class="footer_col title">Explore</h4>
+            <div class="footer_nav-list">
+                @Html.ActionLink("Home", "Index", "Home")
+                @Html.ActionLink("About", "About", "Home")
+                @Html.ActionLink("Contact", "Register", "Account")
+                @Html.ActionLink("Careers", "Login", "Account")
+            </div>
+        </section>
+
+        <section class="footer_col footer_col">
+            <h4 class="footer_col title">Connect</h4>
+            <div class="footer_nav-list">
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Facebook</a>
+            </div>
+        </section>
+
+        <section class="footer_col footer_col">
+            <h4 class="footer_col title">Legal</h4>
+            <div class="footer_nav-list">
+                <a href="/terms" class="footer_link">Terms</a>
+                <a href="/privacy" class="footer_link">Privacy</a>
+            </div>
+        </section>
+
+    </nav>
+    <small>&copy; @DateTime.Now.Year - MedicalBillingCode</small>
+</footer>
+
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
