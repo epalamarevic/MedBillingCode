@@ -23,6 +23,12 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = service.GetProcedureCodes();
             return View(model);
         }
+        public ActionResult Index1()
+        {
+            var service = new ProcedureCodeService();
+            var model = service.GetProcedureCodes();
+            return View(model);
+        }
 
         [Authorize(Roles ="Admin")]
         //CREATE ProcedureCode

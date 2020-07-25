@@ -23,6 +23,12 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = service.GetDiagnosticCodes();
             return View(model);
         }
+        public ActionResult Index1()
+        {
+            var service = new DiagnosticCodeService();
+            var model = service.GetDiagnosticCodes();
+            return View(model);
+        }
 
         [Authorize(Roles ="Admin")]
         //CREATE diagnosisCode
