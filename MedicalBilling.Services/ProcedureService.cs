@@ -19,7 +19,9 @@ namespace MedicalBilling.Services
             var entity = new Procedure()
             {
                 Name = model.Name,
-                Description = model.Description
+                Description = model.Description,
+                Preperation = model.Preperation,
+                Risks = model.Risks
             };
             _ctx.Procedures.Add(entity);
             _ctx.SaveChanges();

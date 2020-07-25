@@ -20,7 +20,9 @@ namespace MedicalBilling.Services
             var entity = new Diagnosis()
             {
                 Name = model.Name,
-                Description = model.Description
+                Description = model.Description,
+                Symptoms = model.Symptoms,
+                Treatments = model.Treatments
             };
             _ctx.Diagnoses.Add(entity);
             _ctx.SaveChanges();

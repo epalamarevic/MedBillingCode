@@ -13,5 +13,7 @@ namespace MedicalBilling.Models.ProcedureModel
         public string Name { get; set; }
         [Display(Name = "Description")]
         public string Description { get; set; }
+        public string Preperation { get; set; }
+        public string Risks { get; set; }
     }
 }
