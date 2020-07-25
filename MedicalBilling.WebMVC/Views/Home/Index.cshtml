@@ -4,23 +4,14 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/bundles/bootstrap")
 }
-
+<body>
 <div class="text-right">
-    <h1 style="font-family:Cambria;font-size:50px;color:black">Medical Billing Code</h1>
-    <p>Obtain Medical ICD-10 codes to determine pricing of a diagnosis or procedure.</p>
+    <h1 style="font-family:Cambria;font-size:50px;color:black;margin-right:2em;">Medical Billing Code</h1>
+    <p style="margin-right:2em">Obtain Medical ICD-10 codes to determine pricing of a diagnosis or procedure.</p>
 </div>
 
 <div class="intro">
     <h2>Do not stress about cost. Find out how much you might pay before going to a provider.</h2>
-</div>
-<div class="col-lg-12 text-center">
-    <p>
-        @using (Html.BeginForm("Index", "Procedure", FormMethod.Get))
-        //@using (Html.BeginForm("Index", "Diagnosis", FormMethod.Get))
-        {
-            <b>Diagnosis/Procedure:</b> @Html.TextBox("search")<input type="submit" value="Search" />
-        }
-    </p>
 </div>
 
 <div class="who">
@@ -56,3 +47,9 @@
 </div>
         </div>
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+
+</body>

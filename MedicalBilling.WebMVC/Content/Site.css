@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-top:5em;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -33,51 +34,56 @@ text-box {
 }
 
 
+/*NAV BAR*/
+.navbar-brand{
+    margin-right:15px;
+}
+.navbar-nav a{
+    text-decoration:none;
+    color:black;
+}
+/*SEARCH BAR*/
+.top {
+    display: inline-table;
+    position: relative;
+    margin-left: 10px;
+}
+.input-group{
+    position:relative;
+    width:850px;
+    margin-top:5px;
+    float:right;
+}
 /*FOOTER */
 footer {
     background-color: lightblue;
-    color: black;
-    font-size: 12px;
     position: relative;
-    padding: 20px 0;
-    width: 100%;
-    z-index: 1;
-}
-footer, header, nav, section {
-    display: inline-block;
-}
-.footer__nav {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1170px;
+    padding: 20px;
     width: 100%;
 }
-.footer_col footer_col {
+.footer_nav{
     display:inline-block;
-    line-height: 25px;
 }
-.footer_nav-list a{
-    text-decoration:none;
-    display:list-item;
-
-
+section {
+    display: inline-grid;
+    margin-right: 8em;
 }
-
-
-
-/*ERROR PAGE*/
-.image {
-    width: 500px;
-    height: 500px;
+.list a{
+   text-decoration:none;
+   color:black;
+   display:block;
 }
-.error-text{
-    margin-top:50px;
+.title{
+    position:relative;
+    text-transform:uppercase;
 }
 
 /*INTRO HOME PAGE*/
-.intro{
-    color:darkblue;
-    padding:1em;
+
+.intro {
+    color: black;
+    font-weight: bold;
+    padding: 2em;
 }
 .intro h2{
     text-align:center;
@@ -90,4 +96,14 @@ footer, header, nav, section {
 }
 p{
     font-size:15px;
+}
+
+/*ERROR PAGE*/
+.image {
+    width: 500px;
+    height: 500px;
+}
+
+.error-text {
+    margin-top: 50px;
 }

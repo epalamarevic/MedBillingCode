@@ -27,14 +27,16 @@ namespace MedicalBilling.WebMVC.Controllers
         [HttpPost]
         public ActionResult Index(string search)
         {
-            var service = new ProcedureService();
-            var model = service.GetProcedures();
+            //var service = new ProcedureService();
+            //var model = service.GetProcedures();
+            var procedure = from p in _ctx.Procedures select p;
             if (!String.IsNullOrEmpty(search))
             {
-
-                return View(model.Where(e => e.Name.Contains(search)).ToList());
+                procedure = procedure.Where(s => s.Name.Contains(search));
+                //return View(model.Where(e => e.Name.Contains(search)).ToList());
             }
-            return RedirectToAction("NotFound", "Error");
+                return View("Index","Procedure",procedure.ToList());
+           
         }
         
          
