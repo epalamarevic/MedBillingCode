@@ -23,6 +23,12 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = service.GetDiagnosticCodes();
             return View(model);
         }
+        public ActionResult Index1()
+        {
+            var service = new DiagnosticCodeService();
+            var model = service.GetDiagnosticCodes();
+            return View(model);
+        }
 
         [Authorize(Roles ="Admin")]
         //CREATE diagnosisCode
@@ -48,7 +54,7 @@ namespace MedicalBilling.WebMVC.Controllers
         {
             DiagnosticCodeService service = new DiagnosticCodeService();
             var model = service.GetDiagnosticCodeById(id);
-            return View(model);
+            return PartialView("Details", model);
         }
 
 
@@ -66,7 +72,9 @@ namespace MedicalBilling.WebMVC.Controllers
             };
             return View(model);
         }
-        [HttpPut]
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(DiagnosticCode diagnosticCode)
         {
             if (ModelState.IsValid)

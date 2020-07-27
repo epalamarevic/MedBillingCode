@@ -18,6 +18,7 @@ namespace MedicalBilling.Services
         {
             var entity = new ProcedureCode()
             {
+                Name = model.Name,
                 ICD10Code = model.ICD10Code,
                 Price = model.Price,
                 ProcedureId = model.ProcedureId
@@ -33,6 +34,7 @@ namespace MedicalBilling.Services
             var procedureCodeList = procedureCodeEntities.Select(pc => new ProcedureCodeDetail
             {
                 ProcedureCodeId = pc.ProcedureCodeId,
+                Name = pc.Name,
                 ICD10Code = pc.ICD10Code,
                 Price = pc.Price,
                 ProcedureId = pc.ProcedureId
@@ -57,6 +59,7 @@ namespace MedicalBilling.Services
         public void UpdateProcedureCode(ProcedureCodeDetail detail)
         {
             var entity = _ctx.ProcedureCodes.Single(e => e.ProcedureCodeId == detail.ProcedureCodeId);
+            entity.Name = detail.Name;
             entity.ICD10Code = detail.ICD10Code;
             entity.Price = detail.Price;
             _ctx.SaveChanges();

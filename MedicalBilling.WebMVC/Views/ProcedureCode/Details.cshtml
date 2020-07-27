@@ -2,51 +2,36 @@
 
 @{
     ViewBag.Title = "Details";
+
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>ProcedureCodeDetail</h4>
-    <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProcedureId)
+
+        <dt style="font-size:20px">
+            @Html.DisplayNameFor(model => model.ICD10Code):
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProcedureId)
-        </dd>
-
-        
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProcedureCodeId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProcedureCodeId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ICD10Code)
-        </dt>
-
-        <dd>
+        <dd style="font-size:15px">
             @Html.DisplayFor(model => model.ICD10Code)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
+    </dl>
+</div>
+<div>
+    <dl class="dl-horizontal">
+        <dt style="font-size:20px">
+            @Html.DisplayNameFor(model => model.Price):
         </dt>
 
-        <dd>
+        <dd style="font-size:15px">
             @Html.DisplayFor(model => model.Price)
+
+            <p>*prices are subject to change</p>
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProcedureCodeId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="text-center" style="margin-left:25em;margin-bottom:5em">
+        <input type="button" style="position:center;margin-right:20px" value="Procedure List" onclick="@("window.location.href='" + @Url.Action("Index", "Procedure") + "'");" />
+        <input type="button" value="Procedure Codes" onclick="@("window.location.href='" + @Url.Action("Index1", "ProcedureCode") + "'");" />
+        </div>

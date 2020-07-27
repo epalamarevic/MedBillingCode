@@ -59,13 +59,21 @@
     <Compile Include="Entities\Procedure.cs" />
     <Compile Include="Entities\ProcedureCode.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202007092257536_initialRole.cs" />
-    <Compile Include="Migrations\202007092257536_initialRole.Designer.cs">
-      <DependentUpon>202007092257536_initialRole.cs</DependentUpon>
+    <Compile Include="Migrations\202007202113420_first.cs" />
+    <Compile Include="Migrations\202007202113420_first.Designer.cs">
+      <DependentUpon>202007202113420_first.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007111351222_rmoveProcedreCodeName.cs" />
-    <Compile Include="Migrations\202007111351222_rmoveProcedreCodeName.Designer.cs">
-      <DependentUpon>202007111351222_rmoveProcedreCodeName.cs</DependentUpon>
+    <Compile Include="Migrations\202007202310207_addedmoredetails.cs" />
+    <Compile Include="Migrations\202007202310207_addedmoredetails.Designer.cs">
+      <DependentUpon>202007202310207_addedmoredetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007251646450_removedICDcodeentity.cs" />
+    <Compile Include="Migrations\202007251646450_removedICDcodeentity.Designer.cs">
+      <DependentUpon>202007251646450_removedICDcodeentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007261257258_addnametocodes.cs" />
+    <Compile Include="Migrations\202007261257258_addnametocodes.Designer.cs">
+      <DependentUpon>202007261257258_addnametocodes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,11 +83,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202007092257536_initialRole.resx">
-      <DependentUpon>202007092257536_initialRole.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202007202113420_first.resx">
+      <DependentUpon>202007202113420_first.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007111351222_rmoveProcedreCodeName.resx">
-      <DependentUpon>202007111351222_rmoveProcedreCodeName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202007202310207_addedmoredetails.resx">
+      <DependentUpon>202007202310207_addedmoredetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007251646450_removedICDcodeentity.resx">
+      <DependentUpon>202007251646450_removedICDcodeentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007261257258_addnametocodes.resx">
+      <DependentUpon>202007261257258_addnametocodes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

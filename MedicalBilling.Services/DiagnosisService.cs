@@ -20,7 +20,9 @@ namespace MedicalBilling.Services
             var entity = new Diagnosis()
             {
                 Name = model.Name,
-                Description = model.Description
+                Description = model.Description,
+                Symptoms = model.Symptoms,
+                Treatments = model.Treatments
             };
             _ctx.Diagnoses.Add(entity);
             _ctx.SaveChanges();
@@ -48,7 +50,9 @@ namespace MedicalBilling.Services
             {
                 DiagnosisId = diagnosisEntity.DiagnosisId,
                 Name = diagnosisEntity.Name,
-                Description = diagnosisEntity.Description
+                Description = diagnosisEntity.Description,
+                Symptoms = diagnosisEntity.Symptoms,
+                Treatments = diagnosisEntity.Treatments
             };
            
         }
@@ -60,6 +64,8 @@ namespace MedicalBilling.Services
             var entity = _ctx.Diagnoses.Single(e => e.DiagnosisId == detail.DiagnosisId);
             entity.Name = detail.Name;
             entity.Description = detail.Description;
+            entity.Symptoms = detail.Symptoms;
+            entity.Treatments = detail.Treatments;
            return _ctx.SaveChanges() == 1;
         }
 
@@ -70,6 +76,16 @@ namespace MedicalBilling.Services
             var entity = _ctx.Diagnoses.Single(e => e.DiagnosisId == diagnosisId);
             _ctx.Diagnoses.Remove(entity);
             return _ctx.SaveChanges() == 1;
+        }
+
+        public IEnumerable<Diagnosis> Search(string searchTerm)
+        {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return _ctx.Diagnoses;
+            }
+            return _ctx.Diagnoses.Where(e => e.Name.Contains(searchTerm));
+                
         }
     }
 }

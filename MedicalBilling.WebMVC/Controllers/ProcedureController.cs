@@ -17,12 +17,29 @@ namespace MedicalBilling.WebMVC.Controllers
         private ApplicationDbContext _ctx = new ApplicationDbContext();
 
         // GET: Procedure
+        [HttpGet]
         public ActionResult Index()
         {
             var service = new ProcedureService();
             var model = service.GetProcedures();
             return View(model);
         }
+       
+        [HttpPost]
+        public ActionResult Index(string searchText)
+        {
+
+            var procedure = from sr in _ctx.Procedures select sr;
+
+            if (!String.IsNullOrEmpty(searchText))
+            {
+                procedure = procedure.Where(c => c.Name.Contains(searchText));
+            }
+
+            return View("Index","Procedure",procedure.ToList());
+        }
+
+
 
         [Authorize(Roles ="Admin")]
         //CREATE Procedure
@@ -43,6 +60,7 @@ namespace MedicalBilling.WebMVC.Controllers
         }
 
         // GET Procedure DETAILS/ID
+        [HttpGet]
         public ActionResult Details(int id)
         {
             var service = new ProcedureService();
@@ -60,7 +78,9 @@ namespace MedicalBilling.WebMVC.Controllers
             {
                 ProcedureId = detail.ProcedureId,
                 Name = detail.Name,
-                Description = detail.Description
+                Description = detail.Description,
+                Preperation = detail.Preperation,
+                Risks = detail.Risks
             };
             return View(model);
         }

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MedicalBilling.Models.DiagnosticCodeModels.DiagnosticCodeDetail>
+
+@{
+    ViewBag.Title = "Index1";
+}
+    
+        <h1 style="padding:1em; margin-left:2em">Diagnosis Codes</h1>
+        <div class="container" >
+            <table class="table table-condensed">
+                <tr>
+                    <th style="font-size: 15px;font-style:oblique">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th style="font-size: 15px;font-style:oblique">
+                        @Html.DisplayNameFor(model => model.ICD10Code)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="font-size:15px;" onclick="@("window.location.href='" + @Url.Action("Details", "Diagnosis",new { id = item.DiagnosisId }) + "'");">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td style="font-size:15px;" onclick="@("window.location.href='" + @Url.Action("Details", "Diagnosis",new { id = item.DiagnosisId }) + "'");">
+                            @Html.DisplayFor(modelItem => item.ICD10Code)
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>

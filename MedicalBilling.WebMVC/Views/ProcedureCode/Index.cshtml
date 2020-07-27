@@ -19,6 +19,9 @@
             @Html.DisplayNameFor(model => model.ProcedureCodeId)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ICD10Code)
         </th>
         <th>
@@ -28,26 +31,29 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProcedureId)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.ProcedureCodeId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ICD10Code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {id=item.ProcedureCodeId  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.ProcedureCodeId  }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProcedureCodeId })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProcedureId)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.ProcedureCodeId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ICD10Code)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ProcedureCodeId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ProcedureCodeId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ProcedureCodeId })
+    </td>
+</tr>
 }
 
 </table>

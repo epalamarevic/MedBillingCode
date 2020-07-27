@@ -49,6 +49,7 @@ namespace MedicalBilling.Data
         public DbSet<Procedure> Procedures { get; set; }
         public DbSet<DiagnosticCode> DiagnosticCodes { get; set; }
         public DbSet<ProcedureCode> ProcedureCodes { get; set; }
+        
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -19,18 +19,22 @@ namespace MedicalBilling.WebMVC.Controllers
         private ApplicationDbContext _ctx = new ApplicationDbContext();
 
         // GET: LIST of Diagnosis
+        [HttpGet]
         public ActionResult Index(string search)
         {
             var service = new DiagnosisService();
             var model = service.GetAllDiagnoses();
-            return View(model.Where(x => x.Name.Contains(search)).ToList());
-            
+            if (!String.IsNullOrEmpty(search))
+            {
+                model = model.Where(s => s.Name.Contains(search));
+            }
+            return View(model);
         }
 
-        //create method search 
-        
-        //CREATE diagnosis
 
+
+        //CREATE diagnosis
+        [Authorize(Roles ="Admin")]
         public ActionResult Create()
         {
             return View();
@@ -68,10 +72,14 @@ namespace MedicalBilling.WebMVC.Controllers
             {
                 DiagnosisId = detail.DiagnosisId,
                 Name = detail.Name,
-                Description = detail.Description
+                Description = detail.Description,
+                Symptoms = detail.Symptoms,
+                Treatments = detail.Treatments
+               
             };
             return View(model);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Diagnosis diagnosis)

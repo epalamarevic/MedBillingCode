@@ -23,6 +23,12 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = service.GetProcedureCodes();
             return View(model);
         }
+        public ActionResult Index1()
+        {
+            var service = new ProcedureCodeService();
+            var model = service.GetProcedureCodes();
+            return View(model);
+        }
 
         [Authorize(Roles ="Admin")]
         //CREATE ProcedureCode
@@ -46,9 +52,10 @@ namespace MedicalBilling.WebMVC.Controllers
         // GET ProcedureCode DETAILS/ID
         public ActionResult Details(int id)
         {
+           
             var service = new ProcedureCodeService();
             var model = service.GetProcedureCodeById(id);
-            return View(model);
+            return PartialView("Details", model);
         }
 
 

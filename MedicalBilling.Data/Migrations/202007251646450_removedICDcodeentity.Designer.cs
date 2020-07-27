@@ -7,13 +7,13 @@ namespace MedicalBilling.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class initialRole : IMigrationMetadata
+    public sealed partial class removedICDcodeentity : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initialRole));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(removedICDcodeentity));
         
         string IMigrationMetadata.Id
         {
-            get { return "202007092257536_initialRole"; }
+            get { return "202007251646450_removedICDcodeentity"; }
         }
         
         string IMigrationMetadata.Source
