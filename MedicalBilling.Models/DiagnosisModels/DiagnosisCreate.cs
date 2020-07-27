@@ -9,10 +9,8 @@ namespace MedicalBilling.Models.DiagnosisModels
 {
     public class DiagnosisCreate
     {
-        [Display(Name="Diagnosis Name")]
+        [Required]
         public string Name { get; set; }
-
-        [Display(Name = "Description")]
         public string Description { get; set; }
         public string Symptoms { get; set; }
         public string Treatments { get; set; }

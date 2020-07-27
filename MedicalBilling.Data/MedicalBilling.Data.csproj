@@ -71,6 +71,10 @@
     <Compile Include="Migrations\202007251646450_removedICDcodeentity.Designer.cs">
       <DependentUpon>202007251646450_removedICDcodeentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007261257258_addnametocodes.cs" />
+    <Compile Include="Migrations\202007261257258_addnametocodes.Designer.cs">
+      <DependentUpon>202007261257258_addnametocodes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007251646450_removedICDcodeentity.resx">
       <DependentUpon>202007251646450_removedICDcodeentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007261257258_addnametocodes.resx">
+      <DependentUpon>202007261257258_addnametocodes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -72,7 +72,9 @@ namespace MedicalBilling.WebMVC.Controllers
             };
             return View(model);
         }
-        [HttpPut]
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(DiagnosticCode diagnosticCode)
         {
             if (ModelState.IsValid)

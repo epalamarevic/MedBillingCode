@@ -17,5 +17,7 @@ namespace MedicalBilling.Models.DiagnosisModels
 
         public string Symptoms { get; set; }
         public string Treatments { get; set; }
+
+        
     }
 }

@@ -15,5 +15,6 @@ namespace MedicalBilling.Data.Entities
         public string Description { get; set; }
         public string Symptoms { get; set; }
         public string Treatments { get; set; }
+
     }
 }

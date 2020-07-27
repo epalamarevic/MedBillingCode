@@ -18,6 +18,7 @@ namespace MedicalBilling.Services
         {
             var entity = new DiagnosticCode()
             {
+                Name = model.Name,
                 ICD10Code = model.ICD10Code,
                 Price = model.Price,
                 DiagnosisId = model.DiagnosisId
@@ -33,6 +34,7 @@ namespace MedicalBilling.Services
             var diagnositicCodeList = diagnosticCodeEntities.Select(dc => new DiagnosticCodeDetail
             {
                 DiagnosticCodeId = dc.DiagnosticCodeId,
+                Name =dc.Name,
                 ICD10Code = dc.ICD10Code,
                 Price = dc.Price,
                 DiagnosisId = dc.DiagnosisId
@@ -57,6 +59,7 @@ namespace MedicalBilling.Services
         public void UpdateDiagnosticCode (DiagnosticCodeDetail detail)
         {
             var entity = _ctx.DiagnosticCodes.Single(e => e.DiagnosticCodeId == detail.DiagnosticCodeId);
+            entity.Name = detail.Name;
             entity.ICD10Code = detail.ICD10Code;
             entity.Price = detail.Price;
             _ctx.SaveChanges();

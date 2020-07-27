@@ -12,6 +12,7 @@ namespace MedicalBilling.Data.Entities
     {   
         [Key]
         public int DiagnosticCodeId { get; set; }
+        public string Name { get; set; }
         public string ICD10Code { get; set; }
         public decimal Price { get; set; }
 

@@ -183,7 +183,6 @@
     <Compile Include="Controllers\DiagnosisController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ICD10CodesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProcedureCodeController.cs" />
     <Compile Include="Controllers\ProcedureController.cs" />
@@ -280,7 +279,6 @@
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\ProcedureCode\Index1.cshtml" />
-    <Content Include="Views\ICD10Codes\Index.cshtml" />
     <Content Include="Views\DiagnosisCode\Index1.cshtml" />
   </ItemGroup>
   <ItemGroup>

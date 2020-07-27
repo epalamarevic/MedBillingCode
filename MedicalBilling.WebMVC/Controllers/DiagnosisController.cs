@@ -20,30 +20,18 @@ namespace MedicalBilling.WebMVC.Controllers
 
         // GET: LIST of Diagnosis
         [HttpGet]
-        public ActionResult Index()
-        {
-
-            var service = new DiagnosisService();
-            var model = service.GetAllDiagnoses();
-            return View(model);
-        }
-
-        [HttpPost]
         public ActionResult Index(string search)
         {
             var service = new DiagnosisService();
             var model = service.GetAllDiagnoses();
-            
-           if (!String.IsNullOrEmpty(search))
+            if (!String.IsNullOrEmpty(search))
             {
-
-                return View(model.Where(e => e.Name.Contains(search)|| search == null).ToList());
+                model = model.Where(s => s.Name.Contains(search));
             }
-            return RedirectToAction("NotFound", "Error");
-
+            return View(model);
         }
 
-        
+
 
         //CREATE diagnosis
         [Authorize(Roles ="Admin")]
@@ -91,6 +79,7 @@ namespace MedicalBilling.WebMVC.Controllers
             };
             return View(model);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Diagnosis diagnosis)

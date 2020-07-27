@@ -24,22 +24,22 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = service.GetProcedures();
             return View(model);
         }
+       
         [HttpPost]
-        public ActionResult Index(string search)
+        public ActionResult Index(string searchText)
         {
-            //var service = new ProcedureService();
-            //var model = service.GetProcedures();
-            var procedure = from p in _ctx.Procedures select p;
-            if (!String.IsNullOrEmpty(search))
+
+            var procedure = from sr in _ctx.Procedures select sr;
+
+            if (!String.IsNullOrEmpty(searchText))
             {
-                procedure = procedure.Where(s => s.Name.Contains(search));
-                //return View(model.Where(e => e.Name.Contains(search)).ToList());
+                procedure = procedure.Where(c => c.Name.Contains(searchText));
             }
-                return View("Index","Procedure",procedure.ToList());
-           
+
+            return View("Index","Procedure",procedure.ToList());
         }
-        
-         
+
+
 
         [Authorize(Roles ="Admin")]
         //CREATE Procedure

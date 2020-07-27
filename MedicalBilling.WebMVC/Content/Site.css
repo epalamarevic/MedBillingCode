@@ -42,24 +42,49 @@ text-box {
     text-decoration:none;
     color:black;
 }
-/*SEARCH BAR*/
-.top {
-    display: inline-table;
-    position: relative;
-    margin-left: 10px;
+.container{
+    padding:1em;
 }
-.input-group{
+/*SEARCH BAR*/
+
+.top {
+    padding:3em;
+    background-color:lavender;
+    position: relative;
+    margin-top:auto;
+}
+.search-header{
     position:relative;
-    width:850px;
-    margin-top:5px;
-    float:right;
+    padding:5em;
+    display:inline;
+
+}
+.search-header h1{
+    font-weight:bold;
+    position:center;
+}
+.input-group {
+    position: relative;
+    margin-top: 5px;
+    width: 900px;
+    float: right;
+   padding-bottom:5em;
+}
+.form-control{
+    position:relative;
+    font-size:20px;
+    height:50px;
+}
+button{
+    height:50px;
 }
 /*FOOTER */
 footer {
     background-color: lightblue;
-    position: relative;
+    position: fixed;
     padding: 20px;
     width: 100%;
+    
 }
 .footer_nav{
     display:inline-block;
@@ -106,4 +131,13 @@ p{
 
 .error-text {
     margin-top: 50px;
+}
+.table{
+    padding:5em;
+}
+
+
+/*HOVER OVER TD IN TABLE*/
+tr:hover td {
+    background-color: lavender
 }

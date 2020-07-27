@@ -77,5 +77,15 @@ namespace MedicalBilling.Services
             _ctx.Diagnoses.Remove(entity);
             return _ctx.SaveChanges() == 1;
         }
+
+        public IEnumerable<Diagnosis> Search(string searchTerm)
+        {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return _ctx.Diagnoses;
+            }
+            return _ctx.Diagnoses.Where(e => e.Name.Contains(searchTerm));
+                
+        }
     }
 }
