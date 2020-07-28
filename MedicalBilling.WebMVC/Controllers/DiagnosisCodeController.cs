@@ -17,21 +17,29 @@ namespace MedicalBilling.WebMVC.Controllers
         private ApplicationDbContext _ctx = new ApplicationDbContext();
 
         // GET: DiagnosisCode
+        [HttpGet]
         public ActionResult Index()
         {
             var service = new DiagnosticCodeService();
             var model = service.GetDiagnosticCodes();
             return View(model);
         }
-        public ActionResult Index1()
+        //Get DiagnosisCode List and Search
+        [HttpGet]
+        public ActionResult Index1(string search)
         {
             var service = new DiagnosticCodeService();
             var model = service.GetDiagnosticCodes();
+            if (!String.IsNullOrEmpty(search))
+            {
+                model = model.Where(s => s.ICD10Code.Contains(search));
+            }
             return View(model);
         }
 
+
+        //Create DiagnosticCode
         [Authorize(Roles ="Admin")]
-        //CREATE diagnosisCode
         public ActionResult Create()
         {
             return View();
@@ -59,6 +67,7 @@ namespace MedicalBilling.WebMVC.Controllers
 
 
         //EDIT Diagnostic Code DETAILS
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var service = new DiagnosticCodeService();
@@ -66,6 +75,7 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = new DiagnosticCodeDetail
             {
                 DiagnosticCodeId = detail.DiagnosticCodeId,
+                Name = detail.Name,
                 ICD10Code = detail.ICD10Code,
                 Price = detail.Price,
                 DiagnosisId = detail.DiagnosisId
@@ -88,6 +98,7 @@ namespace MedicalBilling.WebMVC.Controllers
         }
 
         //DELETE diagnosticCode by ID
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var service = new DiagnosticCodeService();

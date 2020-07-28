@@ -17,21 +17,28 @@ namespace MedicalBilling.WebMVC.Controllers
         private ApplicationDbContext _ctx = new ApplicationDbContext();
 
         // GET: ProcedureCode
+        [HttpGet]
         public ActionResult Index()
         {
             var service = new ProcedureCodeService();
             var model = service.GetProcedureCodes();
             return View(model);
         }
-        public ActionResult Index1()
+        //Get List ProcedureCode and search
+        [HttpGet]
+        public ActionResult Index1(string search)
         {
             var service = new ProcedureCodeService();
             var model = service.GetProcedureCodes();
+            if (!String.IsNullOrEmpty(search))
+            {
+                model = model.Where(s => s.ICD10Code.Contains(search));
+            }
             return View(model);
         }
-
+        
+        //Create ProcedureCode
         [Authorize(Roles ="Admin")]
-        //CREATE ProcedureCode
         public ActionResult Create()
         {
             return View();
@@ -60,6 +67,7 @@ namespace MedicalBilling.WebMVC.Controllers
 
 
         //EDIT ProcedureCode DETAILS
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
 
@@ -68,6 +76,7 @@ namespace MedicalBilling.WebMVC.Controllers
             var model = new ProcedureCodeDetail
             {
                 ProcedureCodeId = detail.ProcedureCodeId,
+                Name = detail.Name,
                 ICD10Code = detail.ICD10Code,
                 Price = detail.Price,
                 ProcedureId = detail.ProcedureId
@@ -87,6 +96,7 @@ namespace MedicalBilling.WebMVC.Controllers
         }
 
         //DELETE procedureCode by ID
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var service = new ProcedureCodeService();

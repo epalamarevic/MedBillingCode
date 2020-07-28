@@ -45,7 +45,7 @@ namespace MedicalBilling.WebMVC.Controllers
                 list.Add(new RoleViewModel(role));
             return View(list);
         }
-
+        //Create a Role
         public ActionResult Create()
         {
             return View();
@@ -57,7 +57,7 @@ namespace MedicalBilling.WebMVC.Controllers
             await RoleManager.CreateAsync(role);
             return RedirectToAction("Index");
         }
-
+        //Edit a Role
         public async Task<ActionResult> Edit(string id)
         {
             var role = await RoleManager.FindByIdAsync(id);
@@ -70,12 +70,13 @@ namespace MedicalBilling.WebMVC.Controllers
             await RoleManager.UpdateAsync(role);
             return RedirectToAction("Index");
         }
-
+        //Get Role Details
         public async Task<ActionResult> Details(string id)
         {
             var role = await RoleManager.FindByIdAsync(id);
             return View(new RoleViewModel(role));
         }
+        //Delete a Role
         public async Task<ActionResult> Delete(string id)
         {
             var role = await RoleManager.FindByIdAsync(id);

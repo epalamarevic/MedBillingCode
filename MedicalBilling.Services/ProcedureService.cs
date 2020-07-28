@@ -1,4 +1,5 @@
-﻿using MedicalBilling.Data;
+﻿using Contracts;
+using MedicalBilling.Data;
 using MedicalBilling.Data.Entities;
 using MedicalBilling.Models.ProcedureModel;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MedicalBilling.Services
 {
-    public class ProcedureService
+    public class ProcedureService : IProcedureService
     {
         private readonly ApplicationDbContext _ctx = new ApplicationDbContext();
 
