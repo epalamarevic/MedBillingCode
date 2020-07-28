@@ -1,4 +1,5 @@
-﻿using MedicalBilling.Data;
+﻿using Contracts;
+using MedicalBilling.Data;
 using MedicalBilling.Data.Entities;
 using MedicalBilling.Models.DiagnosisModels;
 using System;
@@ -9,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace MedicalBilling.Services
 {
-   public class DiagnosisService
+   public class DiagnosisService : IDiagnosisService
+
     {
         private readonly ApplicationDbContext _ctx = new ApplicationDbContext();
 
@@ -78,14 +80,5 @@ namespace MedicalBilling.Services
             return _ctx.SaveChanges() == 1;
         }
 
-        public IEnumerable<Diagnosis> Search(string searchTerm)
-        {
-            if (string.IsNullOrEmpty(searchTerm))
-            {
-                return _ctx.Diagnoses;
-            }
-            return _ctx.Diagnoses.Where(e => e.Name.Contains(searchTerm));
-                
-        }
     }
 }

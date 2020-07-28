@@ -37,7 +37,7 @@
 bottom: 0;">
     <section class="footer_col">
         <h4 class="footer_col Logo">MedicalBillingCode</h4>
-        @Html.Partial("_LoginPartial")
+        
     </section>
     <nav class="footer_nav">
         <section class="footer_col">
@@ -45,8 +45,8 @@ bottom: 0;">
             <div class="footer_nav list">
                 @Html.ActionLink("Home", "Index", "Home")
                 @Html.ActionLink("About", "About", "Home")
-                <a href="#">Contact</a>
-                <a href="#">Careers</a>
+                @Html.ActionLink("Contact", "Contact", "Home")
+                @Html.ActionLink("Careers", "NotFound", "Error")
             </div>
         </section>
 
@@ -70,6 +70,8 @@ bottom: 0;">
             <h4 class="footer_col title">Admin</h4>
             <div class="footer_nav list">
                 @Html.ActionLink("Login", "Login", "Account")
+                @Html.ActionLink("Register","Register","Account")
+                @Html.ActionLink("Role","Index","Role")
 
             </div>
         </section>

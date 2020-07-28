@@ -1,4 +1,5 @@
-﻿using MedicalBilling.Data;
+﻿using Contracts;
+using MedicalBilling.Data;
 using MedicalBilling.Data.Entities;
 using MedicalBilling.Models.ProcedureCodeModels;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MedicalBilling.Services
 {
-    public class ProcedureCodeService
+    public class ProcedureCodeService : IProcedureCodeService
     {
         private readonly ApplicationDbContext _ctx = new ApplicationDbContext();
 
@@ -49,6 +50,7 @@ namespace MedicalBilling.Services
             var procedureCodeDetails = new ProcedureCodeDetail
             {
                 ProcedureCodeId = procedureCodeEntity.ProcedureCodeId,
+                Name = procedureCodeEntity.Name,
                 ICD10Code = procedureCodeEntity.ICD10Code,
                 Price = procedureCodeEntity.Price,
                 ProcedureId = procedureCodeEntity.ProcedureId,

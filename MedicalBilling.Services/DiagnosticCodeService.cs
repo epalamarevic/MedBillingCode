@@ -1,4 +1,5 @@
-﻿using MedicalBilling.Data;
+﻿using Contracts;
+using MedicalBilling.Data;
 using MedicalBilling.Data.Entities;
 using MedicalBilling.Models.DiagnosticCodeModels;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MedicalBilling.Services
 {
-    public class DiagnosticCodeService
+    public class DiagnosticCodeService : IDiagnosisCodeService
     {
         private readonly ApplicationDbContext _ctx = new ApplicationDbContext();
 
@@ -49,6 +50,7 @@ namespace MedicalBilling.Services
             var diagnosticCodeDetails = new DiagnosticCodeDetail
             {
                 DiagnosticCodeId = diagnosticCodeEntity.DiagnosticCodeId,
+                Name= diagnosticCodeEntity.Name,
                 ICD10Code = diagnosticCodeEntity.ICD10Code,
                 Price = diagnosticCodeEntity.Price,
                 DiagnosisId = diagnosticCodeEntity.DiagnosisId,

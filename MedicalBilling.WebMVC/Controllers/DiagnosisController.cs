@@ -18,7 +18,7 @@ namespace MedicalBilling.WebMVC.Controllers
     {
         private ApplicationDbContext _ctx = new ApplicationDbContext();
 
-        // GET: LIST of Diagnosis
+        // GET: LIST of Diagnosis / search
         [HttpGet]
         public ActionResult Index(string search)
         {
@@ -29,6 +29,7 @@ namespace MedicalBilling.WebMVC.Controllers
                 model = model.Where(s => s.Name.Contains(search));
             }
             return View(model);
+            
         }
 
 
@@ -61,9 +62,10 @@ namespace MedicalBilling.WebMVC.Controllers
             return View(model);
         }
 
-        
+
 
         //EDIT DIAGNOSIS 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             DiagnosisService service = new DiagnosisService();
@@ -95,6 +97,7 @@ namespace MedicalBilling.WebMVC.Controllers
 
 
         //DELETE diagnosis by ID
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             DiagnosisService service = new DiagnosisService();
