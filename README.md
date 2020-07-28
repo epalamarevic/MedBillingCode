@@ -37,14 +37,14 @@ Javascript, Jquery and C# were used in contribution to the application.Front-end
 Sources were used in contribution to define correct ICD-10codes in relation to diagnosis and procedure.
 Note that pricing included is not to be used as correct billableestimated price for the code.
 #### Sources
--- *ICD, World Health Organization:  https://www.who.int/classifications/icd/en/
--- CloudCare: https://www.carecloud.com/
--- Find-A-Code: https://www.findacode.com/index.html
+- *ICD, World Health Organization:  https://www.who.int/classifications/icd/en/
+- CloudCare: https://www.carecloud.com/
+- Find-A-Code: https://www.findacode.com/index.html
 
 # Credits
 -Emina Palamarevic
 
-#License
+# License
 This project is in correspondence with MIT License.Copyright(c)
 .NET Foundation and Contributors
 All rights reserved.
