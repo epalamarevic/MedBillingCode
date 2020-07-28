@@ -31,8 +31,10 @@ To implement any of the back end CRUD for the data entries; make sure that the s
 
 ://localhost:00000/ (Diagnosis,Procedure,DiagnosisCode,ProcedureCode)/ (Create,Edit,Delete)/ {id}
 
-To edit or delete make sure you have the {id} parameterimplemented, check to confirm by looking at the list of diagnosis, procedure orcodes.
 Follow the above website example and navigate through the create,edit and delete site to see how to implement them.
+To edit or delete make sure you have the {id} parameter implemented, check to confirm your create, edit and delete
+by looking at the list of diagnosis, procedures or codes.
+
 
 # Contribution
 Javascript, Jquery and C# were used in contribution to the application. Front-end of the application includes multiple javascript for the design of theweb page.
