@@ -48,10 +48,12 @@ namespace MedicalBilling.WebMVC.Models
 
     public class LoginViewModel
     {
+        
+
+
+        [Display(Name = "User Name")]
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +66,18 @@ namespace MedicalBilling.WebMVC.Models
 
     public class RegisterViewModel
     {
+
+        [Display(Name = "User Name")]
+        [Required]
+        public string UserName { get; set; }
+
+
+        [Display(Name = "Full Name"), Required]
+        public string FullName { get; set; }
+
+        public string RoleName { get; set; }
+
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

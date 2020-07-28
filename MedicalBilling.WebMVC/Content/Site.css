@@ -1,10 +1,12 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top:5em;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin-top:25px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -15,10 +17,111 @@
 .dl-horizontal dt {
     white-space: normal;
 }
+.navbar-brand,
+.nav navbar-nav{
+    color: black;
+}
+   
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    input,
+    select,
+    textarea {
+        max-width: 580px;
+    }
+text-box {
+    width:100%;
+}
+
+
+/*NAV BAR*/
+.navbar-brand{
+    margin-right:15px;
+}
+.navbar-nav a{
+    text-decoration:none;
+    color:black;
+}
+.container{
+    padding:1em;
+}
+/*SEARCH BAR*/
+
+.top {
+    padding:3em;
+    background-color:lavender;
+    position: relative;
+    margin-top:auto;
+}
+.tab-content{
+    width:670px;
+}
+.top .row{
+    margin-left:5em;
+}
+.search-header{
+    margin-left:5em;
+}
+
+    /*FOOTER */
+    footer {
+        background-color: lightblue;
+        position: fixed;
+        padding: 20px;
+        width: 100%;
+    }
+.footer_nav{
+    display:inline-block;
+}
+section {
+    display: inline-grid;
+    margin-right: 8em;
+}
+.list a{
+   text-decoration:none;
+   color:black;
+   display:block;
+}
+.title{
+    position:relative;
+    text-transform:uppercase;
+}
+
+/*INTRO HOME PAGE*/
+
+.intro {
+    color: black;
+    font-weight: bold;
+    padding: 2em;
+}
+.intro h2{
+    text-align:center;
+    font-family:Calibri;
+}
+.who{
+    text-align:center;
+    padding:2em;
+    margin-top:2em;
+}
+p{
+    font-size:15px;
+}
+
+/*ERROR PAGE*/
+.image {
+    width: 500px;
+    height: 500px;
+}
+
+.error-text {
+    margin-top: 50px;
+}
+.table{
+    padding:5em;
+}
+
+
+/*HOVER OVER TD IN TABLE*/
+tr:hover td {
+    background-color: lavender
 }

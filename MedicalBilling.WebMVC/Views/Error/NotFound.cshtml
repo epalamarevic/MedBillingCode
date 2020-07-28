@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "My Error Page";
+    Layout = null;
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/bootstrap")
+}
+
+<body>
+    <div class="container" style="background-color:white">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="img-responsive">
+                    <img src="https://shrugdoc.com/wp-content/uploads/2019/05/tilted-with-bg-copy.jpg" class="image" alt="sadmaskemoji" />
+                </div>
+            </div>
+            <div class="col-md-6 error-text">
+                <div style="text-align:center; padding:5px; color:blue ">
+                    <h1>
+                        Sorry we could not find what you are looking for.
+                    </h1>
+                    <br />
+                    <h2>
+                        Please try the option below.
+                    </h2>
+                    <br />
+                    <h3>@Html.ActionLink("Go Back To Home Page", "Index", "Home")</h3> @*link name , action method name , controller name*@
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

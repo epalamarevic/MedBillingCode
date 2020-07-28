@@ -54,11 +54,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiagnosisService.cs" />
+    <Compile Include="DiagnosticCodeService.cs" />
+    <Compile Include="ProcedureCodeService.cs" />
+    <Compile Include="ProcedureService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{57CE0B8A-7F88-4C26-9385-295B0650045C}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MedicalBilling.Data\MedicalBilling.Data.csproj">
+      <Project>{82D892A7-2545-4489-861D-D784CB898F6E}</Project>
+      <Name>MedicalBilling.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MedicalBilling.Models\MedicalBilling.Models.csproj">
+      <Project>{E26D055B-A1F7-4E3C-9618-07CBC62B78F9}</Project>
+      <Name>MedicalBilling.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

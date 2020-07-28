@@ -1,0 +1,37 @@
+﻿@model MedicalBilling.Models.DiagnosticCodeModels.DiagnosticCodeDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <dl class="dl-horizontal">
+        <dt style="font-size:20px">
+            @Html.DisplayNameFor(model => model.ICD10Code):
+        </dt>
+
+        <dd style="font-size:15px">
+            @Html.DisplayFor(model => model.ICD10Code)
+        </dd>
+    </dl>
+</div>
+<div>
+    <dl class="dl-horizontal">
+        <dt style="font-size:20px">
+            @Html.DisplayNameFor(model => model.Price):
+        </dt>
+
+        <dd style="font-size:15px">
+            @Html.DisplayFor(model => model.Price)
+
+            <p>*prices are subject to change</p>
+
+        </dd>
+    </dl>
+</div>
+<div class="text-center" style="margin-left:25em;margin-bottom:5em">
+    <input type="button" style="position:center;margin-right:20px" value="Diagnosis List" onclick="@("window.location.href='" + @Url.Action("Index", "Diagnosis") + "'");" />
+    <input type="button" value="Diagnosis Codes" onclick="@("window.location.href='" + @Url.Action("Index1", "DiagnosisCode") + "'");" />
+</div>
+
