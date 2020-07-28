@@ -28,7 +28,9 @@ First create an Admin Role. In the footer section there isan Admin column, conti
 Once you created an Admin user role. Register and login (both are located under the Admin column).
 
 To implement any of the back end CRUD for the data entries;make sure that the site you are on looks something like this:
+
 ://localhost:00000/ (Diagnosis,Procedure,DiagnosisCode,ProcedureCode)/ (Create,Edit,Delete)/ {id}
+
 To edit or delete make sure you have the {id} parameterimplemented, check to confirm by looking at the list of diagnosis, procedure orcodes.
 
 # Contribution
