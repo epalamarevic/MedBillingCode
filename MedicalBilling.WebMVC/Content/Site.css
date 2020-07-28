@@ -64,12 +64,17 @@ text-box {
 }
 
     /*FOOTER */
-    footer {
-        background-color: lightblue;
-        position: fixed;
-        padding: 20px;
-        width: 100%;
-    }
+.wrapper {
+    margin-bottom: -50px;
+}
+.footer {
+    margin-top: 160px;
+    background-color: lightblue;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    
+}
 .footer_nav{
     display:inline-block;
 }
