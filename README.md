@@ -3,7 +3,6 @@
 This repository is an ASP.Net MVC Web Application of amedical billing resource.
 It provides ICD-10 billable codes for a common listof diagnosis and procedures. 
 #### Mission:
-MedicalBillingCode is transforming the healthcare experiance with the most powerful, easy to use, flexiable resource for all users.
 We provide public users the ability to find diagnostic codes(ICD-10) to determin pricing of diagnoses and procedures.
 We want you to be ready before you get that bill from your provider.
 
